@@ -22,6 +22,8 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         setupNavigationButtons()
         
         setupViews()
+        
+        setupGestureRecognizers()
     }
     
     // Note: badgeValue initializes back to zero upon dismissing of viewController...
@@ -160,6 +162,30 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func setupGestureRecognizers() {
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition))
+        priceLabel.addGestureRecognizer(tap)
+        priceLabel.isUserInteractionEnabled = true
+        
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition))
+        productLabel.addGestureRecognizer(tap1)
+        productSubLabel.isUserInteractionEnabled = true
+        
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition))
+        productSubLabel.addGestureRecognizer(tap2)
+        productSubLabel.isUserInteractionEnabled = true
+        
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition))
+        textView.addGestureRecognizer(tap3)
+        textView.isUserInteractionEnabled = true
+    }
+    
+    func handleTapRecognition() {
+        
+        return
     }
     
 /*

@@ -166,28 +166,23 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     
     func setupGestureRecognizers() {
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition))
-        priceLabel.addGestureRecognizer(tap)
-        priceLabel.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition1))
+        imageView.addGestureRecognizer(tap)
+        imageView.isUserInteractionEnabled = true
         
-        let tap1 = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition))
-        productLabel.addGestureRecognizer(tap1)
-        productSubLabel.isUserInteractionEnabled = true
-        
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition))
-        productSubLabel.addGestureRecognizer(tap2)
-        productSubLabel.isUserInteractionEnabled = true
-        
-        let tap3 = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition))
-        textView.addGestureRecognizer(tap3)
-        textView.isUserInteractionEnabled = true
     }
     
-    func handleTapRecognition() {
+    func handleTapRecognition1() {
+        
+        let updateVC = UINavigationController(rootViewController: ProductUpdateController())
+        
+        updateVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        
+        present(updateVC, animated: true, completion: nil)
         
         return
     }
-    
+
 /*
     Photo function handlers for Admin Use
 */

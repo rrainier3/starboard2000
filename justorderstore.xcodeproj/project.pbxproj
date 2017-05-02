@@ -36,6 +36,7 @@
 		4F6447EA1EAEE2A700AF559E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6447E81EAEE2A700AF559E /* LaunchScreen.storyboard */; };
 		4F6447F21EAEE3B200AF559E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F6447F11EAEE3B200AF559E /* GoogleService-Info.plist */; };
 		4F6E64141EB0131E00B1852C /* GothamProRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6E64131EB0131E00B1852C /* GothamProRegular.ttf */; };
+		4F808E811EB769E60074D1E0 /* ProductUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F808E801EB769E60074D1E0 /* ProductUpdateController.swift */; };
 		4F84010B1EB417C9004E3F85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84010A1EB417C9004E3F85 /* User.swift */; };
 		F1396B4CD0A365FAEE06A517 /* Pods_justorderstore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38ED701522D26065E1F92A14 /* Pods_justorderstore.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		4F6447EB1EAEE2A700AF559E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F6447F11EAEE3B200AF559E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F6E64131EB0131E00B1852C /* GothamProRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamProRegular.ttf; sourceTree = "<group>"; };
+		4F808E801EB769E60074D1E0 /* ProductUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductUpdateController.swift; sourceTree = "<group>"; };
 		4F84010A1EB417C9004E3F85 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		76103E489B5D2321BA8C29FC /* Pods-justorderstore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-justorderstore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-justorderstore/Pods-justorderstore.debug.xcconfig"; sourceTree = "<group>"; };
 		A99AA9B9433600A4023E0FD9 /* Pods-justorderstore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-justorderstore.release.xcconfig"; path = "Pods/Target Support Files/Pods-justorderstore/Pods-justorderstore.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				4F2343E11EAF7A7F0010E491 /* StubContentViewController.swift */,
 				4F2343E71EAF7B3C0010E491 /* ProductViewController.swift */,
 				4F2343E91EAF7B770010E491 /* ProductViewController+Handlers.swift */,
+				4F808E801EB769E60074D1E0 /* ProductUpdateController.swift */,
 				4F2343EB1EAF7BD70010E491 /* BasketViewController.swift */,
 			);
 			name = Controller;
@@ -352,6 +355,7 @@
 				4F2343E01EAF79D70010E491 /* StorePopoverViewController.swift in Sources */,
 				4F2343FB1EAF7EAF0010E491 /* ExampleTableViewCell.swift in Sources */,
 				4F2343F11EAF7D210010E491 /* TTSegmentedControl.swift in Sources */,
+				4F808E811EB769E60074D1E0 /* ProductUpdateController.swift in Sources */,
 				4F2343EF1EAF7CFB0010E491 /* UIFont+Zeplin.swift in Sources */,
 				4F2343DA1EAF77D30010E491 /* Basket.swift in Sources */,
 				4F2343D01EAF775A0010E491 /* ControllersProvider.swift in Sources */,

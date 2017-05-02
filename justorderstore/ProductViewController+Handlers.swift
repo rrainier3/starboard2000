@@ -46,10 +46,6 @@ extension ProductViewController {
         
         containerView.addSubview(imageView)
         
-//        containerView.addSubview(cameraButton)
-//        
-//        _ = cameraButton.anchor(imageView.centerYAnchor, left: imageView.centerXAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 60, heightConstant: 60)
-        
         // 722x520/2 pixel size applied to heightConstant
         _ = imageView.anchor(containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 520/2)
         
@@ -116,6 +112,14 @@ extension ProductViewController {
         // approach #1 filter the basket after appending
         //basket.append(flyingProduct)
         //basket = checkBasketForDuplicates(basket)
+        
+    }
+    
+    // #selector handleUpdateButton action
+    func handleUpdateButton() {
+
+        let presentingVC = UINavigationController(rootViewController: BasketViewController())
+        self.navigationController?.present(presentingVC, animated: true, completion: nil)
         
     }
     

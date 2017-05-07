@@ -17,47 +17,78 @@ class UpdateJitterButton: UIButton, Jitterable {
     
 }
 
-class ProductUpdateController: UIViewController, UITextFieldDelegate, Jitterable {
+class ProductUpdateController: UIViewController, UITextViewDelegate, UITextFieldDelegate, Jitterable {
     
-    let emailTextField: SkyFloatingLabelTextField = {
-        let emailLogin = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 200, height: 45))
-        emailLogin.placeholder = "Email Address"
-        emailLogin.title = "Email Address"
-        emailLogin.titleColor = .white
-        emailLogin.errorColor = UIColor.orange
+    let productLabel: SkyFloatingLabelTextField = {
+        let product_label = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 200, height: 45))
+        product_label.placeholder = "Product Title"
+        product_label.title = "Product Title"
+        product_label.titleColor = .white
+        product_label.errorColor = UIColor.orange
         
-        emailLogin.selectedTitle = "Email Address"
-        emailLogin.selectedTitleColor = .white
-        emailLogin.selectedLineColor = .white
-        emailLogin.font = UIFont.fontAvenirMedium(ofSize: 18)
+        product_label.selectedTitle = "Product Title"
+        product_label.selectedTitleColor = .white
+        product_label.selectedLineColor = .white
+        product_label.font = UIFont.fontAvenirMedium(ofSize: 18)
         
-        emailLogin.textColor = .white
-        emailLogin.placeholderColor = UIColor.white.withAlphaComponent(0.75)
-        emailLogin.lineColor = UIColor.white.withAlphaComponent(0.75)
+        product_label.textColor = .white
+        product_label.placeholderColor = UIColor.white.withAlphaComponent(0.8)
+        product_label.lineColor = UIColor.white.withAlphaComponent(0.8)
+
+        product_label.textAlignment = .left
+        product_label.isHidden = false
+        product_label.translatesAutoresizingMaskIntoConstraints = false
         
-        return emailLogin
+        return product_label
     }()
     
-    let passwordField: SkyFloatingLabelTextField = {
-        let password = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 200, height: 45))
-        password.placeholder = "Password"
-        password.title = "Password"
-        password.titleColor = .white
-        password.errorColor = UIColor.orange
+    let productSubLabel: SkyFloatingLabelTextField = {
+        let product_sublabel = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 200, height: 45))
+        product_sublabel.placeholder = "Product SubTitle"
+        product_sublabel.title = "Product SubTitle"
+        product_sublabel.titleColor = .white
+        product_sublabel.errorColor = UIColor.orange
         
-        password.selectedTitle = "Password"
-        password.selectedTitleColor = .white
-        password.selectedLineColor = .white
-        password.font = UIFont.fontAvenirMedium(ofSize: 18)
+        product_sublabel.selectedTitle = "Product SubTitle"
+        product_sublabel.selectedTitleColor = .white
+        product_sublabel.selectedLineColor = .white
+        product_sublabel.font = UIFont.fontAvenirMedium(ofSize: 18)
         
-        password.textColor = .white
-        password.placeholderColor = UIColor.white.withAlphaComponent(0.75)
-        password.lineColor = UIColor.white.withAlphaComponent(0.75)
+        product_sublabel.textColor = .white
+        product_sublabel.placeholderColor = UIColor.white.withAlphaComponent(0.8)
+        product_sublabel.lineColor = UIColor.white.withAlphaComponent(0.8)
         
-        password.isSecureTextEntry = true
+        product_sublabel.textAlignment = .left
+        product_sublabel.isHidden = false
+        product_sublabel.translatesAutoresizingMaskIntoConstraints = false
         
-        return password
+        return product_sublabel
     }()
+    
+    let productDescription: UITextView = {
+        let tv = UITextView()
+        tv.isEditable = true
+        tv.textAlignment = .justified
+        
+        tv.textColor = .white
+		tv.font = UIFont.fontAvenirMedium(ofSize: 18)
+        tv.layer.borderColor = UIColor.white.cgColor
+        tv.layer.borderWidth = 1
+
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.backgroundColor = .clear
+
+        tv.isHidden = false
+        
+        // Let us style the linespacing CGFloat in this paragraph
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 6
+    
+        let attributes = [NSParagraphStyleAttributeName: style]
+        tv.attributedText = NSAttributedString(string: tv.text, attributes: attributes)
+        return tv
+    }()
+
     
     let productUpdateButton: UpdateJitterButton = {
         
@@ -84,7 +115,7 @@ class ProductUpdateController: UIViewController, UITextFieldDelegate, Jitterable
         
         self.navigationController?.navigationBar.isHidden = false
         
-        let dimAlphaColor = UIColor.gray.withAlphaComponent(0.8)
+        let dimAlphaColor = UIColor.gray.withAlphaComponent(0.9)
         
         self.view.backgroundColor = dimAlphaColor
         
@@ -92,8 +123,12 @@ class ProductUpdateController: UIViewController, UITextFieldDelegate, Jitterable
         
         setupNavigationButtons()
 
-        setupEmailTextField()
-        setupPasswordField()
+/*
+		All fields to be updated below including UpdateButton - 05/01/17
+*/
+        setupProductTitleField()
+        setupProductSubTitleField()
+        setupProductDescriptionText()
         setupProductUpdateButton()
     }
     
@@ -133,44 +168,22 @@ class ProductUpdateController: UIViewController, UITextFieldDelegate, Jitterable
     
     func handleUpdateButton() {
         
-        guard let email = emailTextField.text, let password = passwordField.text else {
+        guard let product = productLabel.text, let productSub = productSubLabel.text else {
             productUpdateButton.jitter()
             return
         }
         
-        guard let error = emailTextField.errorMessage, let error2 = passwordField.errorMessage else {
+        guard let error = productLabel.errorMessage, let error2 = productSubLabel.errorMessage else {
             productUpdateButton.jitter()
             return
         }
         
-        print(error, error2)
+        print(product, productSub, error, error2)
         
-        print(emailTextField.text!)
-        print(passwordField.text!)
-        
-        /*
-         insert Firebase Authentication here ...
-         */
-        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: {(user, error) in
-            
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            print(user?.providerData as Any)
-            
-            print(user?.displayName as Any)
-            
-            // forcing user to be Admin!
-            user1 = User(userid: self.emailTextField.text!, sessionid: "sessionID", type: .Admin)
-            
-            // successfully logged in our user!
-            // grant access
-            verifyLoginAccess = true
-            self.dismiss(animated: true, completion: nil)
-            
-        })
+/*
+		Implement Firebase persistence here ...
+*/
+
     }
     
     func setupProductUpdateButton() {
@@ -181,25 +194,34 @@ class ProductUpdateController: UIViewController, UITextFieldDelegate, Jitterable
         
     }
     
-    func setupEmailTextField() {
+    func setupProductTitleField() {
         
-        self.emailTextField.delegate = self
+        self.productLabel.delegate = self
         
         let width = self.view.bounds.width - 60
         
-        self.view.addSubview(emailTextField)
-        _ = emailTextField.anchor(self.view.centerYAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: -90, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 60)
+        self.view.addSubview(productLabel)
+        _ = productLabel.anchor(self.view.topAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 160, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 50)
     }
     
-    func setupPasswordField() {
+    func setupProductSubTitleField() {
         
-        self.passwordField.delegate = self
+        self.productSubLabel.delegate = self
         
         let width = self.view.bounds.width - 60
         
-        self.view.addSubview(passwordField)
+        self.view.addSubview(productSubLabel)
         
-        _ = passwordField.anchor(self.view.centerYAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: -20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 60)
+        _ = productSubLabel.anchor(productLabel.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 4, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 50)
+    }
+    
+    func setupProductDescriptionText() {
+    
+        let width = self.view.bounds.width - 60
+        
+        self.view.addSubview(productDescription)
+        
+        _ = productDescription.anchor(productSubLabel.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 80, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 140)
     }
     
     override func didReceiveMemoryWarning() {
@@ -212,11 +234,7 @@ class ProductUpdateController: UIViewController, UITextFieldDelegate, Jitterable
         
         if let floatingLabelTextField = textField as? SkyFloatingLabelTextField {
             
-            if floatingLabelTextField.isSecureTextEntry == true {
-                floatingLabelTextField.errorMessage = validateSkyPasswordTextField(skyFloatingTextField: floatingLabelTextField)
-            } else {
-                floatingLabelTextField.errorMessage = validateSkyFloatingTextField(skyFloatingTextField: floatingLabelTextField)
-            }
+            floatingLabelTextField.errorMessage = validateSkyFloatingTextField(skyFloatingTextField: floatingLabelTextField)
             
         }
         return true
@@ -225,8 +243,8 @@ class ProductUpdateController: UIViewController, UITextFieldDelegate, Jitterable
     func validateSkyFloatingTextField(skyFloatingTextField: SkyFloatingLabelTextField) -> String {
         
         let text = skyFloatingTextField.text
-        if ((text?.characters.count)! < 3 || !isValidEmailAddress(emailAddressString: text!)) {
-            skyFloatingTextField.errorMessage = "Email is invalid"
+        if ((text?.characters.count)! < 3) {
+            skyFloatingTextField.errorMessage = "Input Error"
         } else {
             // The error message will only disappear when we reset it to nil or empty string
             skyFloatingTextField.errorMessage = ""
@@ -235,65 +253,6 @@ class ProductUpdateController: UIViewController, UITextFieldDelegate, Jitterable
         return skyFloatingTextField.errorMessage!
     }
     
-    func validateSkyPasswordTextField(skyFloatingTextField: SkyFloatingLabelTextField) -> String {
-        
-        let text = skyFloatingTextField.text
-        if !isValidPassword(passwordString: text!) {
-            skyFloatingTextField.errorMessage = "Password is invalid"
-        } else {
-            // The error message will only disappear when we reset it to nil or empty string
-            skyFloatingTextField.errorMessage = ""
-        }
-        
-        return skyFloatingTextField.errorMessage!
-    }
-    
-    
-    func isValidPassword(passwordString: String) -> Bool {
-        var returnValue = true
-        // must have 1 alpha and 1 number minimum of 8 char
-        let passwordRegEx = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{7,}$"
-        
-        do {
-            let regex = try NSRegularExpression(pattern: passwordRegEx)
-            let nsString = passwordString as NSString
-            let results = regex.matches(in: passwordString, range: NSRange(location: 0, length: nsString.length))
-            
-            if results.count == 0
-            {
-                returnValue = false
-            }
-            
-        } catch let error as NSError {
-            print("invalid regex: \(error.localizedDescription)")
-            returnValue = false
-        }
-        
-        return returnValue
-    }
-    
-    func isValidEmailAddress(emailAddressString: String) -> Bool {
-        
-        var returnValue = true
-        let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
-        
-        do {
-            let regex = try NSRegularExpression(pattern: emailRegEx)
-            let nsString = emailAddressString as NSString
-            let results = regex.matches(in: emailAddressString, range: NSRange(location: 0, length: nsString.length))
-            
-            if results.count == 0
-            {
-                returnValue = false
-            }
-            
-        } catch let error as NSError {
-            print("invalid regex: \(error.localizedDescription)")
-            returnValue = false
-        }
-        
-        return  returnValue
-    }
     /*
      Override keyboard to dismiss
      */

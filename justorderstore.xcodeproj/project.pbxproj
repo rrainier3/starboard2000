@@ -30,6 +30,7 @@
 		4F2343FD1EAF7EAF0010E491 /* TotalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2343FA1EAF7EAF0010E491 /* TotalTableViewCell.swift */; };
 		4F23440C1EAF829A0010E491 /* GIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F23440B1EAF829A0010E491 /* GIBadgeView.m */; };
 		4F23440E1EAFA99C0010E491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F23440D1EAFA99C0010E491 /* Main.storyboard */; };
+		4F310CBE1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F310CBD1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift */; };
 		4F6447E01EAEE2A700AF559E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6447DF1EAEE2A700AF559E /* AppDelegate.swift */; };
 		4F6447E21EAEE2A700AF559E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6447E11EAEE2A700AF559E /* ViewController.swift */; };
 		4F6447E71EAEE2A700AF559E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6447E61EAEE2A700AF559E /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		4F23440A1EAF829A0010E491 /* GIBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIBadgeView.h; sourceTree = "<group>"; };
 		4F23440B1EAF829A0010E491 /* GIBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIBadgeView.m; sourceTree = "<group>"; };
 		4F23440D1EAFA99C0010E491 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		4F310CBD1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderURL.swift; sourceTree = "<group>"; };
 		4F6447DC1EAEE2A700AF559E /* justorderstore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = justorderstore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6447DF1EAEE2A700AF559E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F6447E11EAEE2A700AF559E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				4F2343CF1EAF775A0010E491 /* ControllersProvider.swift */,
 				4F2343D11EAF77790010E491 /* TabSwitcherItemsProvider.swift */,
 				4F2343D31EAF77960010E491 /* ProductItemsProvider.swift */,
+				4F310CBD1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F2343EC1EAF7BD70010E491 /* BasketViewController.swift in Sources */,
+				4F310CBE1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift in Sources */,
 				4F2343FD1EAF7EAF0010E491 /* TotalTableViewCell.swift in Sources */,
 				4F2343DE1EAF79510010E491 /* StoreViewController.swift in Sources */,
 				4F2343E81EAF7B3C0010E491 /* ProductViewController.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import Money
+import Firebase
 
 var flyingImage: UIImage!
 var flyingProduct: Product!
@@ -23,11 +24,30 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
     var product: Product!
     
     fileprivate var objects: [Product] = []	// used to be [UIImage]
+
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let loginViewController = LoginViewController()
+        
+        guard let allowed = verifyLoginAccess else {
+            
+            self.present(loginViewController, animated: true, completion: nil)
+           	return
+        }
+        
+        if allowed == false { return }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let filterProducts = ProductItemsProvider.items
+
+// let's retrieve product images from Firebase
+// first we replace ProductItemsProvider with ProductItemsProviderURL
+
+//        let filterProducts = ProductItemsProvider.items
+
+        let filterProducts = ProductItemsProviderURL.items
         
         let products69 = filterProducts.filter({ $0.price == 3995 })
         let products49 = filterProducts.filter({ $0.price == 6000 })
@@ -49,6 +69,7 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         }
         
         //setupDataSource()
+        
     }
     
     fileprivate func setupTableView() {
@@ -65,24 +86,54 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ExampleTableViewCell
         
-        var image: UIImage!
+//        var image: UIImage!
+		var grabURL: String!
         
-        image = objects[(indexPath as NSIndexPath).row].normalImage
+//        image = objects[(indexPath as NSIndexPath).row].normalImage
+
+		grabURL = objects[(indexPath as NSIndexPath).row].normalImageURL
         
         product = objects[(indexPath as NSIndexPath).row]
         
         cell.delegate = self		// to enable ChangeViewProtocol
         
-        flyingImage = image
+//        flyingImage = image
+
+        let imageName = grabURL + ".jpg"
+        let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(imageName)
         
-        cell.apply(flyingImage)
-        
+        imageURL.downloadURL(completion: { (url, error) in
+            
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                guard let imageData = UIImage(data: data!) else { return }
+                
+                DispatchQueue.main.async {
+                    let flyingImage = imageData
+                    cell.apply(flyingImage)
+                }
+                
+            }).resume()
+            
+        })
+
         cell.product = product
         
         cell.clipsToBounds = true
         
         return cell
     }
+    
     
     // implement ChangeViewProtocol method
     func loadNewScreen(controller: UIViewController) {

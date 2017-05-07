@@ -15,13 +15,29 @@ class Product: NSObject {
     var subdesc: String?
     var category: String?
     var timestamp: NSNumber?
-    var normalImage: UIImage?
+//    var normalImage: UIImage?
+	var normalImageURL: String?
     var qty: Int?
     var price: Int?
     
     /*
      Introduce new init() to avoid crashing due to adding props
      */
+//    init(dictionary: [String: AnyObject]) {
+//        super.init()
+//        
+//        sku = dictionary["sku"] as? String
+//        desc = dictionary["desc"] as? String
+//        subdesc = dictionary["subdesc"] as? String
+//        category = dictionary["category"] as? String
+//        timestamp = dictionary["timestamp"] as? NSNumber
+//        normalImage = dictionary["normalImage"] as? UIImage
+//        qty = dictionary["qty"] as? Int
+//        price = dictionary["price"] as? Int
+//        
+//    }
+
+
     init(dictionary: [String: AnyObject]) {
         super.init()
         
@@ -30,12 +46,11 @@ class Product: NSObject {
         subdesc = dictionary["subdesc"] as? String
         category = dictionary["category"] as? String
         timestamp = dictionary["timestamp"] as? NSNumber
-        normalImage = dictionary["normalImage"] as? UIImage
+        normalImageURL = dictionary["normalImageURL"] as? String
         qty = dictionary["qty"] as? Int
         price = dictionary["price"] as? Int
         
     }
-    
 }
 
 

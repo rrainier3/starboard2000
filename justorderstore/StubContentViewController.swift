@@ -87,11 +87,11 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ExampleTableViewCell
         
 //        var image: UIImage!
-		var grabURL: String!
-        
 //        image = objects[(indexPath as NSIndexPath).row].normalImage
 
-		grabURL = objects[(indexPath as NSIndexPath).row].normalImageURL
+//		var grabURL: String!
+
+		let grabURL = objects[(indexPath as NSIndexPath).row].normalImageURL
         
         product = objects[(indexPath as NSIndexPath).row]
         
@@ -99,7 +99,7 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         
 //        flyingImage = image
 
-        let imageName = grabURL + ".jpg"
+        let imageName = grabURL! + ".jpg"
         let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(imageName)
         
         imageURL.downloadURL(completion: { (url, error) in

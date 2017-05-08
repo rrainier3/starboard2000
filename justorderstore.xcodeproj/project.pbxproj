@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F1B33551EC0A5920056DF6E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B33541EC0A5920056DF6E /* Cache.swift */; };
 		4F2343D01EAF775A0010E491 /* ControllersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2343CF1EAF775A0010E491 /* ControllersProvider.swift */; };
 		4F2343D21EAF77790010E491 /* TabSwitcherItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2343D11EAF77790010E491 /* TabSwitcherItemsProvider.swift */; };
 		4F2343D41EAF77960010E491 /* ProductItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2343D31EAF77960010E491 /* ProductItemsProvider.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		38ED701522D26065E1F92A14 /* Pods_justorderstore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_justorderstore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F1B33541EC0A5920056DF6E /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		4F2343CF1EAF775A0010E491 /* ControllersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllersProvider.swift; sourceTree = "<group>"; };
 		4F2343D11EAF77790010E491 /* TabSwitcherItemsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabSwitcherItemsProvider.swift; sourceTree = "<group>"; };
 		4F2343D31EAF77960010E491 /* ProductItemsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProvider.swift; sourceTree = "<group>"; };
@@ -96,6 +98,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F1B33531EC0A57C0056DF6E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4F1B33541EC0A5920056DF6E /* Cache.swift */,
+				4F2343F21EAF7D380010E491 /* Extensions.swift */,
+				4F2343F41EAF7D520010E491 /* Protocol.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		4F2343CB1EAF75A50010E491 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,8 +164,6 @@
 				4F6447E61EAEE2A700AF559E /* Assets.xcassets */,
 				4F2343EE1EAF7CFB0010E491 /* UIFont+Zeplin.swift */,
 				4F2343F01EAF7D210010E491 /* TTSegmentedControl.swift */,
-				4F2343F21EAF7D380010E491 /* Extensions.swift */,
-				4F2343F41EAF7D520010E491 /* Protocol.swift */,
 				4F2343FE1EAF7FA90010E491 /* Font */,
 			);
 			name = Resource;
@@ -191,6 +201,7 @@
 		4F6447DE1EAEE2A700AF559E /* justorderstore */ = {
 			isa = PBXGroup;
 			children = (
+				4F1B33531EC0A57C0056DF6E /* Helpers */,
 				4F6447DF1EAEE2A700AF559E /* AppDelegate.swift */,
 				4F2343CE1EAF76F70010E491 /* Data */,
 				4F2343CB1EAF75A50010E491 /* Model */,
@@ -359,6 +370,7 @@
 				4F2343E01EAF79D70010E491 /* StorePopoverViewController.swift in Sources */,
 				4F2343FB1EAF7EAF0010E491 /* ExampleTableViewCell.swift in Sources */,
 				4F2343F11EAF7D210010E491 /* TTSegmentedControl.swift in Sources */,
+				4F1B33551EC0A5920056DF6E /* Cache.swift in Sources */,
 				4F808E811EB769E60074D1E0 /* ProductUpdateController.swift in Sources */,
 				4F2343EF1EAF7CFB0010E491 /* UIFont+Zeplin.swift in Sources */,
 				4F2343DA1EAF77D30010E491 /* Basket.swift in Sources */,

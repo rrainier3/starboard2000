@@ -89,7 +89,7 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
 //        var image: UIImage!
 //        image = objects[(indexPath as NSIndexPath).row].normalImage
 
-//		var grabURL: String!
+		var image: UIImage?
 
 		let grabURL = objects[(indexPath as NSIndexPath).row].normalImageURL
         
@@ -100,15 +100,30 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
 //        flyingImage = image
 
         let imageName = grabURL! + ".jpg"
+        
+        // Firebase Storage reference path
         let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(imageName)
+        
         
         imageURL.downloadURL(completion: { (url, error) in
             
+            image = nil
+
             if error != nil {
                 print(error!.localizedDescription)
                 return
             }
             
+            let urlString = NSString(string: (url?.absoluteString)!)
+            
+            // check cache for image first
+            if let cachedImage = imageCache.object(forKey: urlString) {
+                image = cachedImage
+                cell.apply(image!)
+                return
+            }
+            
+            // otherwise fire off a new download
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 
                 if error != nil {
@@ -117,6 +132,9 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
                 }
                 
                 guard let imageData = UIImage(data: data!) else { return }
+                
+                // Add this image to Cache!
+                imageCache.setObject(imageData, forKey: urlString)
                 
                 DispatchQueue.main.async {
                     let flyingImage = imageData

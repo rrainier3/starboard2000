@@ -18,6 +18,7 @@ class UpdateJitterButton: UIButton, Jitterable {
 }
 
 class ProductUpdateController: UIViewController, UITextViewDelegate, UITextFieldDelegate, Jitterable {
+
     
     let productLabel: SkyFloatingLabelTextField = {
         let product_label = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 200, height: 45))
@@ -110,6 +111,19 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         return button
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let loginViewController = LoginViewController()
+        
+        guard let allowed = verifyLoginAccess else {
+            
+            self.present(loginViewController, animated: true, completion: nil)
+           	return
+        }
+        
+        if allowed == false { return }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -168,7 +182,7 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
     
     func handleUpdateButton() {
         
-        guard let product = productLabel.text, let productSub = productSubLabel.text else {
+        guard let productL = productLabel.text, let productSubL = productSubLabel.text else {
             productUpdateButton.jitter()
             return
         }
@@ -178,11 +192,30 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
             return
         }
         
-        print(product, productSub, error, error2)
+        print(productL,"\n", productSubL, error, error2)
         
 /*
 		Implement Firebase persistence here ...
 */
+
+		let productViewController = ProductViewController()
+        productViewController.xproduct =
+						 Product(dictionary:[
+                            "sku": "1234577" as AnyObject,
+                            "desc": productL as AnyObject,
+                            "subdesc": productSubL as AnyObject,
+                            "category": self.title as AnyObject,
+                            "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
+                            "normalImageURL": flyingProduct.normalImageURL as AnyObject,
+                            "qty": 4 as AnyObject,
+                            "price": 1000 as Int as AnyObject
+                            ])
+        
+        let presentingVC = UINavigationController(rootViewController: productViewController)
+        self.navigationController?.present(presentingVC, animated: true, completion: nil)
+
+        
+    	//dismiss(animated: true, completion: nil)
 
     }
     
@@ -195,6 +228,8 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
     }
     
     func setupProductTitleField() {
+    
+    	self.productLabel.text = flyingProduct.desc
         
         self.productLabel.delegate = self
         
@@ -205,6 +240,8 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
     }
     
     func setupProductSubTitleField() {
+    
+    	self.productSubLabel.text = flyingProduct.subdesc
         
         self.productSubLabel.delegate = self
         

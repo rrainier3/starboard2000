@@ -11,8 +11,16 @@ import ColorMatchTabs
 
 class ProductViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    var product: Product?
+//    var product: Product?
     var imagePicker: UIImagePickerController?
+    
+    var xproduct: Product? {
+        didSet {
+            
+            // update flyingProduct
+            flyingProduct = xproduct
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +37,10 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     // Note: badgeValue initializes back to zero upon dismissing of viewController...
     // so we must define a global var to hold the basket's badgeValue + items-added
     override func viewWillAppear(_ animated: Bool) {
-        
+    
         giBadgeView.badgeValue = basket.count			// reEntrant before viewDidLoad
+
+        
     }
     
     func setupNavigationBar() {

@@ -118,8 +118,10 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
             
             // check cache for image first
             if let cachedImage = imageCache.object(forKey: urlString) {
+    
                 image = cachedImage
                 cell.apply(image!)
+                
                 return
             }
             
@@ -157,7 +159,7 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
     func loadNewScreen(controller: UIViewController) {
         
         let destViewController = ProductViewController()
-        destViewController.product = self.product		// indexPath unreliable here
+//        destViewController.product = self.product		// indexPath unreliable here
         
         let navController = UINavigationController(rootViewController: destViewController)
         // we use self.show instead of self.present(controller)

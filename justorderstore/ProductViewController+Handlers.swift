@@ -54,12 +54,16 @@ extension ProductViewController {
         _ = lineSeparatorView.anchor(imageView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
         
         productLabel.text = flyingProduct.desc
+//		productLabel.text = xproduct?.desc
+    
         productLabel.font = UIFont(name: "GothamPro", size: 18)
         containerView.addSubview(productLabel)
         
         _ = productLabel.anchor(lineSeparatorView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 4, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
         productSubLabel.text = flyingProduct.subdesc
+//		productSubLabel.text = xproduct?.subdesc
+        
         productSubLabel.font = UIFont(name: "GothamPro", size: 15)
         containerView.addSubview(productSubLabel)
         

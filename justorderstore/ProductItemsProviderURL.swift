@@ -20,7 +20,8 @@ class ProductItemsProviderURL {
                 "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
                 "normalImageURL": "asiancucumbersalad" as AnyObject,
                 "qty": 7 as AnyObject,
-                "price": 3995 as Int as AnyObject
+                "price": 3995 as Int as AnyObject,
+                "extendedtext": "This is extended text for admin user to describe product further" as AnyObject
                 ]),
             Product(dictionary:[
                 "sku": "2345678" as AnyObject,
@@ -30,7 +31,9 @@ class ProductItemsProviderURL {
                 "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
                 "normalImageURL": "bimbimbop" as AnyObject,
                 "qty": 9 as AnyObject,
-                "price": 3995 as Int as AnyObject
+                "price": 3995 as Int as AnyObject,
+                "extendedtext": "This is extended text for admin user to describe product further" as AnyObject
+
                 ]),
             Product(dictionary:[
                 "sku": "1234567" as AnyObject,
@@ -40,7 +43,9 @@ class ProductItemsProviderURL {
                 "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
                 "normalImageURL": "koreanbbq" as AnyObject,
                 "qty": 7 as AnyObject,
-                "price": 4500 as Int as AnyObject
+                "price": 4500 as Int as AnyObject,
+                "extendedtext": "This is extended text for admin user to describe product further" as AnyObject
+
                 ]),
             Product(dictionary:[
                 "sku": "2345679" as AnyObject,
@@ -50,7 +55,9 @@ class ProductItemsProviderURL {
                 "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
                 "normalImageURL": "koreanchicken" as AnyObject,
                 "qty": 9 as AnyObject,
-                "price": 4500 as Int as AnyObject
+                "price": 4500 as Int as AnyObject,
+                "extendedtext": "This is extended text for admin user to describe product further" as AnyObject
+
                 ]),
             Product(dictionary:[
                 "sku": "1234560" as AnyObject,
@@ -60,7 +67,9 @@ class ProductItemsProviderURL {
                 "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
                 "normalImageURL": "mongolianbeef" as AnyObject,
                 "qty": 7 as AnyObject,
-                "price": 1000 as AnyObject
+                "price": 1000 as AnyObject,
+                "extendedtext": "This is extended text for admin user to describe product further" as AnyObject
+
                 ]),
             Product(dictionary:[
                 "sku": "2345678" as AnyObject,
@@ -70,7 +79,9 @@ class ProductItemsProviderURL {
                 "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
                 "normalImageURL": "orangechicken" as AnyObject,
                 "qty": 9 as AnyObject,
-                "price": 1000 as AnyObject
+                "price": 1000 as AnyObject,
+                "extendedtext": "This is extended text for admin user to describe product further" as AnyObject
+
                 ]),
 //            Product(dictionary:[
 //                "sku": "1234567" as AnyObject,
@@ -127,7 +138,9 @@ class ProductItemsProviderURL {
                 "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
                 "normalImageURL": "thaicurrysoup" as AnyObject,
                 "qty": 9 as AnyObject,
-                "price": 6000 as Int as AnyObject
+                "price": 6000 as Int as AnyObject,
+                "extendedtext": "This is extended text for admin user to describe product further" as AnyObject
+
                 ])
         ]
     }()

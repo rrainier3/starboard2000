@@ -88,7 +88,8 @@ extension ProductViewController {
         containerView.addSubview(segmentedControl)
         
         _ = segmentedControl.anchor(productSubLabel.bottomAnchor, left: productSubLabel.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 16, leftConstant: 8, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 40)
-        
+
+		textView.text = flyingProduct.extendedtext
         textView.font = UIFont(name: "GothamPro", size: 15)
         containerView.addSubview(textView)
         
@@ -117,6 +118,31 @@ extension ProductViewController {
         //basket.append(flyingProduct)
         //basket = checkBasketForDuplicates(basket)
         
+    }
+    
+    // #selector handle saveButton action
+    func handleSaveButton() {
+    
+    	let stub = "0000"
+    	let generatedSKU = NSUUID().uuidString
+        
+        let productStage = Product(dictionary:[
+            "sku": generatedSKU as AnyObject,
+            "desc": self.productLabel as AnyObject,
+            "subdesc": self.productSubLabel as AnyObject,
+            "category": flyingProduct.category as AnyObject,
+            "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
+            "normalImageURL": stub as AnyObject,
+            "qty": 7 as AnyObject,
+            "price": 999 as Int as AnyObject,
+            "extendedtext": textView.text as AnyObject
+            ])
+        
+		self.persistProductIntoFirebase(productStage)
+        
+        dismiss(animated: true, completion: nil)
+        
+        self.view = nil
     }
     
     // #selector handleUpdateButton action

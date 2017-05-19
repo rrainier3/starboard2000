@@ -8,6 +8,7 @@
 
 import UIKit
 import ColorMatchTabs
+import Firebase
 
 class ProductViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -17,7 +18,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     var xproduct: Product? {
         didSet {
             
-            // update flyingProduct
+            // update flyingProduct here!
             flyingProduct = xproduct
         }
     }
@@ -148,7 +149,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         let button = UIButton(type: .system)
         button.backgroundColor = refTintColor
         
-        button.setTitle("O R D E R", for: .normal)
+        button.setTitle("S A V E  P R O D U C T", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         
         button.titleLabel?.font = UIFont(name: "GothamPro", size: 18)
@@ -261,6 +262,58 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
             present(ac, animated: true)
         }
     }
+    
+    func persistProductIntoFirebase(_ product: Product) {
+        
+        let uidUser = FIRAuth.auth()!.currentUser!.uid
+        let ref = FIRDatabase.database().reference()
+        let storage = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com")
+        
+        let key = ref.child("products").childByAutoId().key
+        let imageRef = storage.child(uidUser).child("\(key).jpg")
+        
+        let data = UIImageJPEGRepresentation(imageView.image!, 0.3)
+        
+        // Create file metadata including the content type
+        let metadata1 = FIRStorageMetadata()
+        metadata1.contentType = "image/jpeg"
+        
+        let uploadTask = imageRef.put(data!, metadata: metadata1) { (metadata, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            imageRef.downloadURL(completion: { (url, error) in
+                if let url = url {
+                    let feed = [
+                        "storeID" : key,
+                        "sku": product.sku!,
+                        "desc": product.desc!,
+                        "subdesc": product.subdesc!,
+                        "category": product.category!,
+                        "timestamp": product.timestamp!,
+                        "normalImageURL": url.absoluteString,
+                        "qty": product.qty!,
+                        "price": product.price!,
+                        "postID" : uidUser,
+                        "extendedtext": product.extendedtext!
+                        ] as [String : Any]
+                    
+                    let productFeed = ["\(key)" : feed]
+                    
+                    ref.child("stores").updateChildValues(productFeed)
+                    
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+            
+        }
+        
+        uploadTask.resume()
+        
+    }
+    
 
     
 }

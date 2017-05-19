@@ -265,12 +265,17 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     
     func persistProductIntoFirebase(_ product: Product) {
         
-        let uidUser = FIRAuth.auth()!.currentUser!.uid
+        let uidStore = FIRAuth.auth()!.currentUser!.uid
         let ref = FIRDatabase.database().reference()
         let storage = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com")
         
-        let key = ref.child("products").childByAutoId().key
-        let imageRef = storage.child(uidUser).child("\(key).jpg")
+        //let key = ref.child("products").childByAutoId().key
+        
+        let key = ref.child(uidStore).child("\(product.sku).jpg")
+        
+        //let imageRef = storage.child(uidStore).child("\(key).jpg")
+        
+        let imageRef = storage.child(uidStore).child("\(product.sku).jpg")
         
         let data = UIImageJPEGRepresentation(imageView.image!, 0.3)
         
@@ -287,7 +292,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
             imageRef.downloadURL(completion: { (url, error) in
                 if let url = url {
                     let feed = [
-                        "storeID" : key,
+                        "storeID" : uidStore,
                         "sku": product.sku!,
                         "desc": product.desc!,
                         "subdesc": product.subdesc!,
@@ -296,7 +301,6 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
                         "normalImageURL": url.absoluteString,
                         "qty": product.qty!,
                         "price": product.price!,
-                        "postID" : uidUser,
                         "extendedtext": product.extendedtext!
                         ] as [String : Any]
                     

@@ -15,7 +15,6 @@ class Product: NSObject {
     var subdesc: String?
     var category: String?
     var timestamp: NSNumber?
-//    var normalImage: UIImage?
 	var normalImageURL: String?
     var qty: Int?
     var price: Int?

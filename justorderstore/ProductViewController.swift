@@ -9,6 +9,7 @@
 import UIKit
 import ColorMatchTabs
 import Firebase
+import MobileCoreServices
 
 class ProductViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -239,6 +240,8 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    
+    	picker.mediaTypes = [kUTTypeImage as String]
         
         let chosenImage = info[UIImagePickerControllerEditedImage] as! UIImage
         imageView.contentMode = .scaleAspectFill
@@ -276,13 +279,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         
         let key = ref.child(uidStore).childByAutoId().key
         
-        //let key = ref.child("products").childByAutoId().key
-        
-        //let key = ref.child(uidStore).child("\(product.sku!)")
-        
         let imageRef = storage.child(uidStore).child("\(key).jpg")
-        
-        //let imageRef = storage.child(uidStore).child("\(product.sku!).jpg")
         
         let data = UIImageJPEGRepresentation(imageView.image!, 0.3)
         
@@ -315,7 +312,6 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
                     
                     ref.child("stores").updateChildValues(productFeed)
                     
-                    //self.dismiss(animated: true, completion: nil)
                 }
             })
             

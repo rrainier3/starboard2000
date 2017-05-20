@@ -128,8 +128,8 @@ extension ProductViewController {
         
         let productStage = Product(dictionary:[
             "sku": generatedSKU as AnyObject,
-            "desc": self.productLabel as AnyObject,
-            "subdesc": self.productSubLabel as AnyObject,
+            "desc": self.productLabel.text as AnyObject,
+            "subdesc": self.productSubLabel.text as AnyObject,
             "category": flyingProduct.category as AnyObject,
             "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
             "normalImageURL": stub as AnyObject,
@@ -140,9 +140,8 @@ extension ProductViewController {
         
 		self.persistProductIntoFirebase(productStage)
         
-        dismiss(animated: true, completion: nil)
+		self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         
-        self.view = nil
     }
     
     // #selector handleUpdateButton action

@@ -149,7 +149,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         let button = UIButton(type: .system)
         button.backgroundColor = refTintColor
         
-        button.setTitle("S A V E  P R O D U C T", for: .normal)
+        button.setTitle("S A V E", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         
         button.titleLabel?.font = UIFont(name: "GothamPro", size: 18)
@@ -159,7 +159,9 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         button.layer.borderWidth = 1
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        button.addTarget(self, action: #selector(handleAddButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSaveButton), for: .touchUpInside)
+
+        //button.addTarget(self, action: #selector(handleAddButton), for: .touchUpInside)
         
         return button
     }()
@@ -247,6 +249,9 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
             UIImageWriteToSavedPhotosAlbum(imageView.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         }
         
+        // pass image to flyingImage
+        flyingImage = imageView.image
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -269,13 +274,15 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         let ref = FIRDatabase.database().reference()
         let storage = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com")
         
+        let key = ref.child(uidStore).childByAutoId().key
+        
         //let key = ref.child("products").childByAutoId().key
         
-        let key = ref.child(uidStore).child("\(product.sku).jpg")
+        //let key = ref.child(uidStore).child("\(product.sku!)")
         
-        //let imageRef = storage.child(uidStore).child("\(key).jpg")
+        let imageRef = storage.child(uidStore).child("\(key).jpg")
         
-        let imageRef = storage.child(uidStore).child("\(product.sku).jpg")
+        //let imageRef = storage.child(uidStore).child("\(product.sku!).jpg")
         
         let data = UIImageJPEGRepresentation(imageView.image!, 0.3)
         
@@ -308,7 +315,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
                     
                     ref.child("stores").updateChildValues(productFeed)
                     
-                    self.dismiss(animated: true, completion: nil)
+                    //self.dismiss(animated: true, completion: nil)
                 }
             })
             

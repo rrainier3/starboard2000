@@ -207,13 +207,9 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
             "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
             "normalImageURL": flyingProduct.normalImageURL as AnyObject,
             "qty": 4 as AnyObject,
-            "price": 1000 as Int as AnyObject,
+            "price": 995 as Int as AnyObject,
             "extendedtext": productDescription.text as AnyObject
             ])
-
-//        guard persistProductIntoFirebase(newProduct) else {
-//            return
-//        }
         
 		let productViewController = ProductViewController()
         productViewController.xproduct = newProduct
@@ -221,64 +217,7 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         let presentingVC = UINavigationController(rootViewController: productViewController)
         self.navigationController?.present(presentingVC, animated: true, completion: nil)
 
-        
-    	//dismiss(animated: true, completion: nil)
-
     }
-    
-//    func persistProductIntoFirebase(_ product: Product)-> Bool {
-//        AppDelegate.instance().showActivityIndicator()
-//        
-//        let uidStore = FIRAuth.auth()!.currentUser!.uid
-//        let ref = FIRDatabase.database().reference()
-//        let storage = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com")
-//        
-//        let key = ref.child("products").childByAutoId().key
-//        let imageRef = storage.child("products").child(uidStore).child("\(key).jpg")
-//        
-//        let data = UIImageJPEGRepresentation(flyingImage, 0.3)
-//        
-//        // Create file metadata including the content type
-//        let metadata1 = FIRStorageMetadata()
-//        metadata1.contentType = "image/jpeg"
-//        
-//        let uploadTask = imageRef.put(data!, metadata: metadata1) { (metadata, error) in
-//            if error != nil {
-//                print(error!.localizedDescription)
-//                AppDelegate.instance().dismissActivityIndicatos()
-//                return
-//            }
-//            
-//            imageRef.downloadURL(completion: { (url, error) in
-//                if let url = url {
-//                    let feed = [
-//                    			"storeID" : key,
-//                                "sku": product.sku!,
-//                                "desc": product.desc!,
-//                                "subdesc": product.subdesc!,
-//                                "category": product.category!,
-//                                "timestamp": product.timestamp!,
-//                                "normalImageURL": url.absoluteString,
-//                                "qty": product.qty!,
-//                                "price": product.price!,
-//                                "postID" : uidStore
-//                                ] as [String : Any]
-//                    
-//                    let productFeed = ["\(key)" : feed]
-//                    
-//                    ref.child("stores").updateChildValues(productFeed)
-//                    AppDelegate.instance().dismissActivityIndicatos()
-//                    
-//                    self.dismiss(animated: true, completion: nil)
-//                }
-//            })
-//            
-//        }
-//        
-//        uploadTask.resume()
-//        
-//        return true
-//    }
     
     func setupProductUpdateButton() {
         

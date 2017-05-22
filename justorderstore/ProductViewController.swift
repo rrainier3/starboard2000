@@ -282,8 +282,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         
         let imageRef = storage.child(uidStore).child("\(key).jpg")
         
-        let data = UIImageJPEGRepresentation(imageView.image!, 1.0)
-        //let data = UIImageJPEGRepresentation(imageView.image!, 0.3)
+        let data = UIImageJPEGRepresentation(imageView.image!, 0.3)
         
         // Create file metadata including the content type
         let metadata1 = FIRStorageMetadata()

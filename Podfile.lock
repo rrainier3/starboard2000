@@ -38,6 +38,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GradientCircularProgress (3.7.0)
   - GTMSessionFetcher/Core (1.1.9)
   - Money (2.0.1):
     - ValueCoding (~> 2)
@@ -50,8 +51,18 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - GradientCircularProgress (from `https://github.com/keygx/GradientCircularProgress`)
   - Money
   - SkyFloatingLabelTextField (~> 2.0.0)
+
+EXTERNAL SOURCES:
+  GradientCircularProgress:
+    :git: https://github.com/keygx/GradientCircularProgress
+
+CHECKOUT OPTIONS:
+  GradientCircularProgress:
+    :commit: fc073d86435a9bef6c169941f0af39b8416f9b27
+    :git: https://github.com/keygx/GradientCircularProgress
 
 SPEC CHECKSUMS:
   ColorMatchTabs: f92f9ff526340c9816570ff2ee9abfc6d85d4a2b
@@ -63,11 +74,12 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GradientCircularProgress: 980f56d08169842ee795c8c3254d7b7433b30114
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   Money: 6faa689f86c455112971c900e8a31fa0b9c02365
   SkyFloatingLabelTextField: 070e749632ffd608d6fd9db3fa488a822524997c
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
 
-PODFILE CHECKSUM: 90318abbcc6bff109309f08cadc99642fafb09c2
+PODFILE CHECKSUM: 4d260582ce3eb4e4e9f2aa56bc905435f746f7e8
 
 COCOAPODS: 1.1.1

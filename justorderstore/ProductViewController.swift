@@ -10,6 +10,7 @@ import UIKit
 import ColorMatchTabs
 import Firebase
 import MobileCoreServices
+import GradientCircularProgress
 
 class ProductViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -281,11 +282,18 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         
         let imageRef = storage.child(uidStore).child("\(key).jpg")
         
-        let data = UIImageJPEGRepresentation(imageView.image!, 0.3)
+        let data = UIImageJPEGRepresentation(imageView.image!, 1.0)
+        //let data = UIImageJPEGRepresentation(imageView.image!, 0.3)
         
         // Create file metadata including the content type
         let metadata1 = FIRStorageMetadata()
         metadata1.contentType = "image/jpeg"
+
+		// Setup circularProgressView
+        v = 0.0
+        progressView = progress.showAtRatio(frame: getRect(), display: true, style: GreenLightStyle())
+        progressView?.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(progressView!)
         
         let uploadTask = imageRef.put(data!, metadata: metadata1) { (metadata, error) in
             if error != nil {
@@ -317,11 +325,49 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
             
         }
         
+        uploadTask.observe(.progress) { (snapshot) in
+            
+            self.progressView!.isHidden = false
+            //self.progressView.setProgress(self.progressView.progress + 0.1, animated: true)
+            
+            self.v += 0.1
+            
+            self.progress.updateRatio(CGFloat(self.v))
+            
+            if self.v > 1.00 {
+                
+                self.progress.dismiss(progress: self.progressView!)
+                return
+            }
+            
+        }
+        
+        uploadTask.observe(.success) { (snapshot) in
+            
+            self.progressView!.isHidden = true
+            self.progressView!.removeFromSuperview()
+            
+        }
+        
         uploadTask.resume()
         
     }
     
-
+    // setup configuration for circularProgressView
+    
+    var v: Double = 0.0
+    
+    var progressView: UIView?
+    
+    let progress = GradientCircularProgress()
+    
+    func getRect() -> CGRect {
+        return CGRect(
+            x: view.frame.origin.x + 15,
+            y: (view.frame.size.height - view.frame.size.width) / 2,
+            width: view.frame.size.width - 30,
+            height: view.frame.size.width - 30)
+    }
     
 }
 

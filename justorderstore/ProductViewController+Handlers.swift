@@ -134,8 +134,9 @@ extension ProductViewController {
             "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
             "normalImageURL": stub as AnyObject,
             "qty": 7 as AnyObject,
-            "price": 999 as Int as AnyObject,
-            "extendedtext": textView.text as AnyObject
+            "price": 999 as AnyObject,
+            "extendedtext": textView.text as AnyObject,
+            "active": 1 as AnyObject
             ])
         
 		self.persistProductIntoFirebase(productStage)

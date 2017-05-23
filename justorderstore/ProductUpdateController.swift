@@ -208,7 +208,8 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
             "normalImageURL": flyingProduct.normalImageURL as AnyObject,
             "qty": 4 as AnyObject,
             "price": 995 as Int as AnyObject,
-            "extendedtext": productDescription.text as AnyObject
+            "extendedtext": productDescription.text as AnyObject,
+            "active": 1 as Int as AnyObject
             ])
         
 		let productViewController = ProductViewController()

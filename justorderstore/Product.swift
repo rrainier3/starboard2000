@@ -19,6 +19,7 @@ class Product: NSObject {
     var qty: Int?
     var price: Int?
     var extendedtext: String?
+    var active: Int?
     
     /*
      Introduce new init() to avoid crashing due to adding props
@@ -50,6 +51,7 @@ class Product: NSObject {
         qty = dictionary["qty"] as? Int
         price = dictionary["price"] as? Int
         extendedtext = dictionary["extendedtext"] as? String
+        active = dictionary["active"] as? Int
         
     }
 }

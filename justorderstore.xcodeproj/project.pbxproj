@@ -32,6 +32,7 @@
 		4F23440C1EAF829A0010E491 /* GIBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F23440B1EAF829A0010E491 /* GIBadgeView.m */; };
 		4F23440E1EAFA99C0010E491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F23440D1EAFA99C0010E491 /* Main.storyboard */; };
 		4F310CBE1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F310CBD1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift */; };
+		4F4B645A1EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B64591EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift */; };
 		4F627CAC1EF6C4090040004F /* ProductItemsProviderFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F627CAB1EF6C4080040004F /* ProductItemsProviderFirebase.swift */; };
 		4F6447E01EAEE2A700AF559E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6447DF1EAEE2A700AF559E /* AppDelegate.swift */; };
 		4F6447E21EAEE2A700AF559E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6447E11EAEE2A700AF559E /* ViewController.swift */; };
@@ -73,6 +74,7 @@
 		4F23440B1EAF829A0010E491 /* GIBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIBadgeView.m; sourceTree = "<group>"; };
 		4F23440D1EAFA99C0010E491 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4F310CBD1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderURL.swift; sourceTree = "<group>"; };
+		4F4B64591EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderFirebaseTest.swift; sourceTree = "<group>"; };
 		4F627CAB1EF6C4080040004F /* ProductItemsProviderFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderFirebase.swift; sourceTree = "<group>"; };
 		4F6447DC1EAEE2A700AF559E /* justorderstore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = justorderstore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6447DF1EAEE2A700AF559E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				4F2343D31EAF77960010E491 /* ProductItemsProvider.swift */,
 				4F310CBD1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift */,
 				4F627CAB1EF6C4080040004F /* ProductItemsProviderFirebase.swift */,
+				4F4B64591EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				4F2343D41EAF77960010E491 /* ProductItemsProvider.swift in Sources */,
 				4F2343EA1EAF7B770010E491 /* ProductViewController+Handlers.swift in Sources */,
 				4F2343F31EAF7D380010E491 /* Extensions.swift in Sources */,
+				4F4B645A1EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift in Sources */,
 				4F2343FC1EAF7EAF0010E491 /* BasketTableViewCell.swift in Sources */,
 				4F2343D21EAF77790010E491 /* TabSwitcherItemsProvider.swift in Sources */,
 				4F2343F51EAF7D520010E491 /* Protocol.swift in Sources */,

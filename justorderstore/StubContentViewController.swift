@@ -99,10 +99,18 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         
 //        flyingImage = image
 
-        let imageName = grabURL! + ".jpg"
+// *        let imageName = grabURL! + ".jpg"
+        
+        // create a firebase storage ref
+        let storageRef = FIRStorage.storage().reference(forURL: grabURL!)
+        
+        let storageFileName = storageRef.name
+        
+        let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
         
         // Firebase Storage reference path
-        let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(imageName)
+// *        let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(imageName)
+        let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(storeID).child(storageFileName)
         
         
         imageURL.downloadURL(completion: { (url, error) in

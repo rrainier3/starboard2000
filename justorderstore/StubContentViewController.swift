@@ -47,12 +47,18 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
 
 //        let filterProducts = ProductItemsProvider.items
 
-        let filterProducts = ProductItemsProviderURL.items
+// *        let filterProducts = ProductItemsProviderURL.items
+        //        let products69 = filterProducts.filter({ $0.price == 3995 })
+        //        let products49 = filterProducts.filter({ $0.price == 6000 })
+        //        let products100 = filterProducts.filter({ $0.price == 1000 })
+        //        let products45 = filterProducts.filter({ $0.price == 4500 })
+
+		let filterProducts = ProductItemsProviderFirebaseTest.items
+        let products69 = filterProducts.filter({ $0.category == "Noodles" })
+        let products49 = filterProducts.filter({ $0.category == "Grilled" })
+        let products100 = filterProducts.filter({ $0.category == "Veggies" })
+        let products45 = filterProducts.filter({ $0.category == "HotFood" })
         
-        let products69 = filterProducts.filter({ $0.price == 3995 })
-        let products49 = filterProducts.filter({ $0.price == 6000 })
-        let products100 = filterProducts.filter({ $0.price == 1000 })
-        let products45 = filterProducts.filter({ $0.price == 4500 })
         
         setupTableView()
         
@@ -85,9 +91,6 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ExampleTableViewCell
-        
-//        var image: UIImage!
-//        image = objects[(indexPath as NSIndexPath).row].normalImage
 
 		var image: UIImage?
 
@@ -96,11 +99,12 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         product = objects[(indexPath as NSIndexPath).row]
         
         cell.delegate = self		// to enable ChangeViewProtocol
-        
-//        flyingImage = image
 
 // *        let imageName = grabURL! + ".jpg"
-        
+        // Firebase Storage reference path
+// *        let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(imageName)
+
+
         // create a firebase storage ref
         let storageRef = FIRStorage.storage().reference(forURL: grabURL!)
         
@@ -108,8 +112,6 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         
         let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
         
-        // Firebase Storage reference path
-// *        let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(imageName)
         let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(storeID).child(storageFileName)
         
         

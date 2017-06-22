@@ -80,7 +80,7 @@ class ProductItemsProviderFirebaseTest {
                 "sku": "2345678" as AnyObject,
                 "desc": "Orange Chicken" as AnyObject,
                 "subdesc": "Tangy Flavor" as AnyObject,
-                "category": "Grilled" as AnyObject,
+                "category": "Veggies" as AnyObject,
                 "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
                 "normalImageURL": "https://firebasestorage.googleapis.com/v0/b/starboard-fbfd1.appspot.com/o/iLCtXp27p4WL5vaVirCIwW8Eprt2%2F-Km3pUt9CqqnXr6uhsT2.jpg?alt=media&token=8c9b5da2-1998-42c5-9fdf-58d653a8df57" as AnyObject,
                 "qty": 9 as AnyObject,

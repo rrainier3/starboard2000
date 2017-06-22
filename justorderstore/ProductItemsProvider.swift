@@ -12,7 +12,7 @@ class ProductItemsProvider {
     
     static let items = {
         return [
-            Product(dictionary:[
+            Product(data:[
                 "sku": "1234560" as AnyObject,
                 "desc": "Asian Cucumber Salad" as AnyObject,
                 "subdesc": "Chicken Flavor" as AnyObject,
@@ -22,7 +22,7 @@ class ProductItemsProvider {
                 "qty": 7 as AnyObject,
                 "price": 3995 as Int as AnyObject
                 ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "2345678" as AnyObject,
                 "desc": "Bim Bim Bop" as AnyObject,
                 "subdesc": "Beef Flavor" as AnyObject,
@@ -32,7 +32,7 @@ class ProductItemsProvider {
                 "qty": 9 as AnyObject,
                 "price": 3995 as Int as AnyObject
                 ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "1234567" as AnyObject,
                 "desc": "Korean Barbeque" as AnyObject,
                 "subdesc": "Chicken Flavor" as AnyObject,
@@ -42,7 +42,7 @@ class ProductItemsProvider {
                 "qty": 7 as AnyObject,
                 "price": 4500 as Int as AnyObject
                 ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "2345679" as AnyObject,
                 "desc": "Korean Grilled Chicken" as AnyObject,
                 "subdesc": "On top of Rice" as AnyObject,
@@ -79,7 +79,7 @@ class ProductItemsProvider {
             //                "qty": 7 as AnyObject,
             //                "price": 100 as AnyObject
             //                ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "2345679" as AnyObject,
                 "desc": "Shrimp Brocolli" as AnyObject,
                 "subdesc": "Stir Fried" as AnyObject,
@@ -89,7 +89,7 @@ class ProductItemsProvider {
                 "qty": 9 as AnyObject,
                 "price": 1000 as Int as AnyObject
                 ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "1234560" as AnyObject,
                 "desc": "Vietnamese Spring Rolls" as AnyObject,
                 "subdesc": "Shrimp Flavor" as AnyObject,
@@ -117,7 +117,7 @@ class ProductItemsProvider {
             //                "qty": 7 as AnyObject,
             //                "price": 69 as AnyObject
             //                ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "2345679" as AnyObject,
                 "desc": "Thai Curry Soup" as AnyObject,
                 "subdesc": "Beef Flavor" as AnyObject,

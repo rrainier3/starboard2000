@@ -12,7 +12,7 @@ class ProductItemsProviderURL {
     
     static let items = {
         return [
-            Product(dictionary:[
+            Product(data:[
                 "sku": "1234560" as AnyObject,
                 "desc": "Asian Cucumber Salad" as AnyObject,
                 "subdesc": "Chicken Flavor" as AnyObject,
@@ -24,7 +24,7 @@ class ProductItemsProviderURL {
                 "extendedtext": "This is extended text for admin user to describe product further" as AnyObject,
                 "active": 1 as AnyObject
                 ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "2345678" as AnyObject,
                 "desc": "Bim Bim Bop" as AnyObject,
                 "subdesc": "Beef Flavor" as AnyObject,
@@ -37,7 +37,7 @@ class ProductItemsProviderURL {
                 "active": 1 as AnyObject
 
                 ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "1234567" as AnyObject,
                 "desc": "Korean Barbeque" as AnyObject,
                 "subdesc": "Chicken Flavor" as AnyObject,
@@ -49,7 +49,7 @@ class ProductItemsProviderURL {
                 "extendedtext": "This is extended text for admin user to describe product further" as AnyObject,
                 "active": 1 as AnyObject
                 ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "2345679" as AnyObject,
                 "desc": "Korean Grilled Chicken" as AnyObject,
                 "subdesc": "On top of Rice" as AnyObject,
@@ -62,7 +62,7 @@ class ProductItemsProviderURL {
                 "active": 1 as AnyObject
 
                 ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "1234560" as AnyObject,
                 "desc": "Mongolian Beef" as AnyObject,
                 "subdesc": "Special Seasoning" as AnyObject,
@@ -75,7 +75,7 @@ class ProductItemsProviderURL {
                 "active": 1 as AnyObject
 
                 ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "2345678" as AnyObject,
                 "desc": "Orange Chicken" as AnyObject,
                 "subdesc": "Tangy Flavor" as AnyObject,
@@ -135,7 +135,7 @@ class ProductItemsProviderURL {
 //                "qty": 7 as AnyObject,
 //                "price": 4500 as AnyObject
 //                ]),
-            Product(dictionary:[
+            Product(data:[
                 "sku": "2345679" as AnyObject,
                 "desc": "Thai Curry Soup" as AnyObject,
                 "subdesc": "Beef Flavor" as AnyObject,

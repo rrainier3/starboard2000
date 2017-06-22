@@ -2,7 +2,7 @@
 //  Product.swift
 //  justorderstore
 //
-//  Created by RayRainier on 4/25/17.
+//  Created by RayRainier on 4/25/17.		Updated 06/18/17
 //  Copyright © 2017 RadiuSense. All rights reserved.
 //
 
@@ -15,45 +15,48 @@ class Product: NSObject {
     var subdesc: String?
     var category: String?
     var timestamp: NSNumber?
-	var normalImageURL: String?
+    var normalImageURL: String?
     var qty: Int?
     var price: Int?
     var extendedtext: String?
     var active: Int?
+    var storeID: String?
     
     /*
      Introduce new init() to avoid crashing due to adding props
+     active:     1
+     category:     "Noodles"
+     desc:     "Asian Cucumber Salad"
+     extendedtext:     "This is extended text for admin user to describ..."
+     normalImageURL:     "https://firebasestorage.googleapis.com/v0/b/sta..."
+     price:     999
+     qty:     7
+     sku:     "7C9F3CD9-39A3-4E85-BB9D-0A597726B379"
+     storeID:     "iLCtXp27p4WL5vaVirCIwW8Eprt2"
+     subdesc:      "Chicken Flavor"
+     timestamp:      1496877353.031771
+     
      */
-//    init(dictionary: [String: AnyObject]) {
-//        super.init()
-//        
-//        sku = dictionary["sku"] as? String
-//        desc = dictionary["desc"] as? String
-//        subdesc = dictionary["subdesc"] as? String
-//        category = dictionary["category"] as? String
-//        timestamp = dictionary["timestamp"] as? NSNumber
-//        normalImage = dictionary["normalImage"] as? UIImage
-//        qty = dictionary["qty"] as? Int
-//        price = dictionary["price"] as? Int
-//        
-//    }
-
-
-    init(dictionary: [String: AnyObject]) {
+    
+    
+    
+    init(data: [String: AnyObject]) {
         super.init()
         
-        sku = dictionary["sku"] as? String
-        desc = dictionary["desc"] as? String
-        subdesc = dictionary["subdesc"] as? String
-        category = dictionary["category"] as? String
-        timestamp = dictionary["timestamp"] as? NSNumber
-        normalImageURL = dictionary["normalImageURL"] as? String
-        qty = dictionary["qty"] as? Int
-        price = dictionary["price"] as? Int
-        extendedtext = dictionary["extendedtext"] as? String
-        active = dictionary["active"] as? Int
+        sku = data["sku"] as? String
+        desc = data["desc"] as? String
+        subdesc = data["subdesc"] as? String
+        category = data["category"] as? String
+        timestamp = data["timestamp"] as? NSNumber
+        normalImageURL = data["normalImageURL"] as? String
+        qty = data["qty"] as? Int
+        price = data["price"] as? Int
+        extendedtext = data["extendedtext"] as? String
+        active = data["active"] as? Int
+        storeID = data["storeID"] as? String
         
     }
 }
+
 
 

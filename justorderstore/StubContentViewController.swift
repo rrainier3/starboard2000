@@ -2,7 +2,7 @@
 //  StubContentViewController.swift
 //  ColorMatchTabs
 //
-//  Created by RayRainier on 2/24/17.
+//  Created by RayRainier on 2/24/17 modified 06/23/17
 //  Copyright © 2017 RadiuSense. All rights reserved.
 //
 
@@ -24,7 +24,7 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
     var product: Product!
     
     fileprivate var objects: [Product] = []	// used to be [UIImage]
-
+    
     override func viewWillAppear(_ animated: Bool) {
         
         let loginViewController = LoginViewController()
@@ -36,7 +36,9 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         }
         
         if allowed == false { return }
-    }
+
+    } // end of function
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +56,7 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         //        let products45 = filterProducts.filter({ $0.price == 4500 })
 
 		let filterProducts = ProductItemsProviderFirebaseTest.items
+        
         let products69 = filterProducts.filter({ $0.category == "Noodles" })
         let products49 = filterProducts.filter({ $0.category == "Grilled" })
         let products100 = filterProducts.filter({ $0.category == "Veggies" })

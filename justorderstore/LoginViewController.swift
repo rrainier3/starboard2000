@@ -9,7 +9,7 @@
 import UIKit
 import SkyFloatingLabelTextField
 import ColorMatchTabs
-import FirebaseAuth
+import Firebase
 
 var verifyLoginAccess: Bool!
 var user1: User!
@@ -19,6 +19,7 @@ class LoginJitterButton: UIButton, Jitterable {
 }
 
 class LoginViewController: UIViewController, UITextFieldDelegate, Jitterable {
+
     
     let emailTextField: SkyFloatingLabelTextField = {
         let emailLogin = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 200, height: 45))
@@ -118,19 +119,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate, Jitterable {
             }
             
             print(user?.providerData as Any)
-            
             print(user?.displayName as Any)
             
             // forcing user to be Admin!
             user1 = User(userid: self.emailTextField.text!, sessionid: "sessionID", type: .Admin)
-            
-            // successfully logged in our user!
-            // grant access
+
+            // successfully logged in our user! grant access
             verifyLoginAccess = true
             self.dismiss(animated: true, completion: nil)
             
-        })
-    }
+        }) // end of FIRAuth
+        
+    } // end of function
     
     func setupLoginRegisterButton() {
         

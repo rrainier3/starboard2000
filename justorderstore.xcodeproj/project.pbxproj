@@ -33,7 +33,8 @@
 		4F23440E1EAFA99C0010E491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F23440D1EAFA99C0010E491 /* Main.storyboard */; };
 		4F310CBE1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F310CBD1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift */; };
 		4F4B645A1EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B64591EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift */; };
-		4F627CAC1EF6C4090040004F /* ProductItemsProviderFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F627CAB1EF6C4080040004F /* ProductItemsProviderFirebase.swift */; };
+		4F4B645C1EFC96BB0069A525 /* ProductItemsProviderFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4B645B1EFC96BB0069A525 /* ProductItemsProviderFirebase.swift */; };
+		4F627CAC1EF6C4090040004F /* ProductItemsProviderImageURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F627CAB1EF6C4080040004F /* ProductItemsProviderImageURL.swift */; };
 		4F6447E01EAEE2A700AF559E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6447DF1EAEE2A700AF559E /* AppDelegate.swift */; };
 		4F6447E21EAEE2A700AF559E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6447E11EAEE2A700AF559E /* ViewController.swift */; };
 		4F6447E71EAEE2A700AF559E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6447E61EAEE2A700AF559E /* Assets.xcassets */; };
@@ -75,7 +76,8 @@
 		4F23440D1EAFA99C0010E491 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4F310CBD1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderURL.swift; sourceTree = "<group>"; };
 		4F4B64591EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderFirebaseTest.swift; sourceTree = "<group>"; };
-		4F627CAB1EF6C4080040004F /* ProductItemsProviderFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderFirebase.swift; sourceTree = "<group>"; };
+		4F4B645B1EFC96BB0069A525 /* ProductItemsProviderFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderFirebase.swift; sourceTree = "<group>"; };
+		4F627CAB1EF6C4080040004F /* ProductItemsProviderImageURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderImageURL.swift; sourceTree = "<group>"; };
 		4F6447DC1EAEE2A700AF559E /* justorderstore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = justorderstore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F6447DF1EAEE2A700AF559E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F6447E11EAEE2A700AF559E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,7 +159,8 @@
 				4F2343D11EAF77790010E491 /* TabSwitcherItemsProvider.swift */,
 				4F2343D31EAF77960010E491 /* ProductItemsProvider.swift */,
 				4F310CBD1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift */,
-				4F627CAB1EF6C4080040004F /* ProductItemsProviderFirebase.swift */,
+				4F627CAB1EF6C4080040004F /* ProductItemsProviderImageURL.swift */,
+				4F4B645B1EFC96BB0069A525 /* ProductItemsProviderFirebase.swift */,
 				4F4B64591EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift */,
 			);
 			name = Data;
@@ -366,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4B645C1EFC96BB0069A525 /* ProductItemsProviderFirebase.swift in Sources */,
 				4F2343EC1EAF7BD70010E491 /* BasketViewController.swift in Sources */,
 				4F310CBE1EBDFA3100ABFAF4 /* ProductItemsProviderURL.swift in Sources */,
 				4F2343FD1EAF7EAF0010E491 /* TotalTableViewCell.swift in Sources */,
@@ -374,7 +378,7 @@
 				4F2343DC1EAF79090010E491 /* LoginViewController.swift in Sources */,
 				4F6447E21EAEE2A700AF559E /* ViewController.swift in Sources */,
 				4F2343E01EAF79D70010E491 /* StorePopoverViewController.swift in Sources */,
-				4F627CAC1EF6C4090040004F /* ProductItemsProviderFirebase.swift in Sources */,
+				4F627CAC1EF6C4090040004F /* ProductItemsProviderImageURL.swift in Sources */,
 				4F2343FB1EAF7EAF0010E491 /* ExampleTableViewCell.swift in Sources */,
 				4F2343F11EAF7D210010E491 /* TTSegmentedControl.swift in Sources */,
 				4F1B33551EC0A5920056DF6E /* Cache.swift in Sources */,

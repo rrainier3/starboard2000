@@ -9,18 +9,70 @@
 import UIKit
 import Firebase
 
+var results = [Product]()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var products = [Product]()
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         FIRApp.configure()
+
+        // firebase call
+        self.retrieveProducts(completionHandler: {
+            
+            isSuccessful -> Void in
+            if isSuccessful {
+                
+                print("Results count = \(results.count)")
+                
+            } else {
+                
+                print("Error: completionHandler")
+                
+            }
+            
+        }) // end of function
         
         return true
     }
+
+    func retrieveProducts(completionHandler: @escaping (Bool) -> Void) {
+        
+        results = [Product]()
+        
+        let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
+        
+        FIRDatabase.database().reference().child(storeID).child("products").observe(.childAdded, with: {(snapshot) in
+            
+            if let snapDictionary = snapshot.value as? [String: AnyObject] {
+                
+                let product = Product(data: snapDictionary)
+                
+                self.products.append(product)
+                
+            }
+            
+            DispatchQueue.main.async(execute: {
+                
+               results = self.products
+                
+                if results.count == 0 {
+                    completionHandler(false)
+                } else {
+                    completionHandler(true)
+                }
+                
+            })
+            
+        }, withCancel: nil)
+        
+    }	// end-of-function
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

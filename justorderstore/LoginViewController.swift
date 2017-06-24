@@ -80,6 +80,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, Jitterable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Welcome to the new world of products = \(providerItems.items.count)")
+        
+        
         self.navigationController?.navigationBar.isHidden = true
         
         let imageView = UIImageView(frame: self.view.bounds)

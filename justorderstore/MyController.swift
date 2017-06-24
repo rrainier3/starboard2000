@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 var results = [Product]()
+var providerItems = ProductItemsProviderReturn()
 
 protocol MyDelegate{
     func didFetchData(data:[Product])
@@ -18,14 +19,27 @@ protocol MyDelegate{
 class MyController : UIViewController, MyDelegate {
 
     override func viewDidLoad() {
-        
-        myMethod { (results) in
-            print("Local count = \(results.count)")
+
+
+        DispatchQueue.main.async(execute: {
+            
+            self.myMethod { (results) in
+                print("Local count = \(results.count)")
+            }
+            
+        })
+
+        let mainQueue = DispatchQueue.main
+        let deadline = DispatchTime.now() + .seconds(10)
+        mainQueue.asyncAfter(deadline: deadline) {
+            // ...
+            
+            print("providerItems = \(providerItems.items.count)")
+            
+            let loginViewController = LoginViewController()
+            self.present(loginViewController, animated: true, completion: nil)
         }
-        
-        let loginViewController = LoginViewController()
-		self.present(loginViewController, animated: true, completion: nil)
-        
+
     }
     
     func myMethod(success:([Product])->Void){
@@ -52,6 +66,8 @@ class MyController : UIViewController, MyDelegate {
     
         //Do what you want
         
+        providerItems.items = data
+        
         for dot in data {
             
             print(dot.sku!)
@@ -59,8 +75,6 @@ class MyController : UIViewController, MyDelegate {
             print(dot.subdesc!)
             
         }
-        
-        results = data
     
     } // end of function
     

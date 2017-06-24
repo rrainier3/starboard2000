@@ -11,22 +11,21 @@ import UIKit
 
 class ProductItemsProviderReturn {
     
-    private var _billAmount = 0.0
-    private var _tipPercent = 0.0
-    private var _tipAmount = 0.0
-    private var _totalAmount = 0.0
+    private var _products:[Product] = []
+    private var _readOnly = 0.0
+
     //
-    var tipAmount: Double {
-        return _tipAmount
+    var readOnly: Double {
+        return _readOnly
     }
     // this will be a read-only computed attribute,
     // you can even use dot(.) to access the value
     //
-    var billAmount: Double {
+    var items: [Product] {
         get {
-            return _billAmount
+            return _products
         } set {
-            _billAmount = newValue
+            _products = newValue
         }
     }
     

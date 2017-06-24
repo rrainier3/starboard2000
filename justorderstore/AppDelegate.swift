@@ -9,8 +9,6 @@
 import UIKit
 import Firebase
 
-var results = [Product]()
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -23,28 +21,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
 
-        // firebase call
-        self.retrieveProducts(completionHandler: {
-            
-            isSuccessful -> Void in
-            if isSuccessful {
-                
-                print("Results count = \(results.count)")
-                
-            } else {
-                
-                print("Error: completionHandler")
-                
-            }
-            
-        }) // end of function
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        window?.rootViewController = UINavigationController(rootViewController: MyController())
+
+//        // firebase call
+//        self.retrieveProducts(completionHandler: {
+//            
+//            isSuccessful -> Void in
+//            if isSuccessful {
+//                
+//                print("@AppDelegate Results count = \(results.count)")
+//                
+//            } else {
+//                
+//                print("Error: completionHandler")
+//                
+//            }
+//            
+//        }) // end of function
         
         return true
     }
 
     func retrieveProducts(completionHandler: @escaping (Bool) -> Void) {
-        
-        results = [Product]()
         
         let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
         

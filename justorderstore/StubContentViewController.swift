@@ -35,15 +35,44 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
            	return
         }
         
-        if allowed == false { return }
-
+        if allowed == false {
+        	
+            return
+            
+            }
+        
     } // end of function
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
+        var products:[Product] = []
+        
+        let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
+        
+        let refFirebase = FIRDatabase.database().reference().child(storeID).child("products")
+        
+        refFirebase.observe(.childAdded, with: {(snapshot) in
+            
+            if let snapDictionary = snapshot.value as? [String: AnyObject] {
+                
+                let product = Product(data: snapDictionary)
+                
+                products.append(product)
+            }
+
+            self.tableView.reloadData()
+    
+    		
+        })
+        
+        for prod in products {
+            
+            print("SKU in firebase \(prod.sku)")
+        }
+
+        
 // let's retrieve product images from Firebase
 // first we replace ProductItemsProvider with ProductItemsProviderURL
 
@@ -57,6 +86,12 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
 
 		let filterProducts = ProductItemsProviderFirebaseTest.items
         
+//                let products69 = filterProducts.filter({ $0.price == 3995 })
+//                let products49 = filterProducts.filter({ $0.price == 6000 })
+//                let products100 = filterProducts.filter({ $0.price == 1000 })
+//                let products45 = filterProducts.filter({ $0.price == 4500 })
+        
+
         let products69 = filterProducts.filter({ $0.category == "Noodles" })
         let products49 = filterProducts.filter({ $0.category == "Grilled" })
         let products100 = filterProducts.filter({ $0.category == "Veggies" })
@@ -103,11 +138,6 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         
         cell.delegate = self		// to enable ChangeViewProtocol
 
-// *        let imageName = grabURL! + ".jpg"
-        // Firebase Storage reference path
-// *        let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(imageName)
-
-
         // create a firebase storage ref
         let storageRef = FIRStorage.storage().reference(forURL: grabURL!)
         
@@ -116,7 +146,6 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
         
         let imageURL = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com").child(storeID).child(storageFileName)
-        
         
         imageURL.downloadURL(completion: { (url, error) in
             

@@ -89,6 +89,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, Jitterable {
         setupEmailTextField()
         setupPasswordField()
         setupLoginRegisterButton()
+        
     }
     
     func handleLoginButton() {

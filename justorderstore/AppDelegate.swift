@@ -20,60 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FIRApp.configure()
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        
-        window?.rootViewController = UINavigationController(rootViewController: MyController())
-
-//        // firebase call
-//        self.retrieveProducts(completionHandler: {
-//            
-//            isSuccessful -> Void in
-//            if isSuccessful {
-//                
-//                print("@AppDelegate Results count = \(results.count)")
-//                
-//            } else {
-//                
-//                print("Error: completionHandler")
-//                
-//            }
-//            
-//        }) // end of function
         
         return true
     }
-
-    func retrieveProducts(completionHandler: @escaping (Bool) -> Void) {
-        
-        let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
-        
-        FIRDatabase.database().reference().child(storeID).child("products").observe(.childAdded, with: {(snapshot) in
-            
-            if let snapDictionary = snapshot.value as? [String: AnyObject] {
-                
-                let product = Product(data: snapDictionary)
-                
-                self.products.append(product)
-                
-            }
-            
-            DispatchQueue.main.async(execute: {
-                
-               results = self.products
-                
-                if results.count == 0 {
-                    completionHandler(false)
-                } else {
-                    completionHandler(true)
-                }
-                
-            })
-            
-        }, withCancel: nil)
-        
-    }	// end-of-function
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

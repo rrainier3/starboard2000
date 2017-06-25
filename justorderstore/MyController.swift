@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-var results = [Product]()
+//var results = [Product]()
 var providerItems = ProductItemsProviderReturn()
 
 protocol MyDelegate{

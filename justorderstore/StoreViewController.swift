@@ -8,10 +8,17 @@
 
 import UIKit
 import ColorMatchTabs
+import Firebase
 
 var refTintColor: UIColor = UIColor.clear
 
-class StoreViewController: ColorMatchTabsViewController {
+var productItems = ProductItemsProviderReturn()
+
+protocol ProductsDelegate{
+    func didFetchData(data:[Product])
+}
+
+class StoreViewController: ColorMatchTabsViewController, ProductsDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -37,9 +44,65 @@ class StoreViewController: ColorMatchTabsViewController {
         
         dataSource = self
         reloadData()
+        
+        DispatchQueue.main.async(execute: {
+            
+            self.productsInFirebase(success: { (results) in
+                //print("Local count = \(results.count)")
+            })
+            
+        })
+        
+        let mainQueue = DispatchQueue.main
+        let deadline = DispatchTime.now() + .seconds(10)
+        mainQueue.asyncAfter(deadline: deadline) {
+            // ...
+            
+            print("providerItems = \(productItems.items.count)")
+            
+        }
+        
     }
+
+    func productsInFirebase (success:([Product])->Void){
+        
+        let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
+        let ref = FIRDatabase.database().reference().child(storeID).child("products")
+        ref.observe(.value, with: { snapshot in
+            var products: [Product] = []
+            
+            for item in snapshot.children {
+                
+                
+                if let item = item as? FIRDataSnapshot {
+                    let postDict = Product(data: item.value as! [String : AnyObject])
+                    products.append(postDict)
+                }
+            }
+            self.didFetchData(data: products)
+        })
+        
+    } // end of function
     
-}
+    func didFetchData(data:[Product]){
+        
+        //Do what you want
+        
+        productItems.items = data
+        
+        for dot in data {
+            
+            print(dot.sku!)
+            print(dot.desc!)
+            print(dot.subdesc!)
+            
+        }
+        
+    } // end of function
+    
+} // end of class
+
+
 
 extension StoreViewController: ColorMatchTabsViewControllerDataSource {
     

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4F174D651EFD5C0100782070 /* ProductItemsProviderReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F174D641EFD5C0100782070 /* ProductItemsProviderReturn.swift */; };
-		4F174D671EFDB2EB00782070 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F174D661EFDB2EB00782070 /* MyController.swift */; };
 		4F1B33551EC0A5920056DF6E /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1B33541EC0A5920056DF6E /* Cache.swift */; };
 		4F2343D01EAF775A0010E491 /* ControllersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2343CF1EAF775A0010E491 /* ControllersProvider.swift */; };
 		4F2343D21EAF77790010E491 /* TabSwitcherItemsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2343D11EAF77790010E491 /* TabSwitcherItemsProvider.swift */; };
@@ -51,7 +50,6 @@
 /* Begin PBXFileReference section */
 		38ED701522D26065E1F92A14 /* Pods_justorderstore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_justorderstore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F174D641EFD5C0100782070 /* ProductItemsProviderReturn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductItemsProviderReturn.swift; sourceTree = "<group>"; };
-		4F174D661EFDB2EB00782070 /* MyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyController.swift; sourceTree = "<group>"; };
 		4F1B33541EC0A5920056DF6E /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		4F2343CF1EAF775A0010E491 /* ControllersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllersProvider.swift; sourceTree = "<group>"; };
 		4F2343D11EAF77790010E491 /* TabSwitcherItemsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabSwitcherItemsProvider.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				4F2343DB1EAF79090010E491 /* LoginViewController.swift */,
-				4F174D661EFDB2EB00782070 /* MyController.swift */,
 				4F2343DD1EAF79510010E491 /* StoreViewController.swift */,
 				4F2343DF1EAF79D70010E491 /* StorePopoverViewController.swift */,
 				4F2343E11EAF7A7F0010E491 /* StubContentViewController.swift */,
@@ -216,8 +213,8 @@
 		4F6447DE1EAEE2A700AF559E /* justorderstore */ = {
 			isa = PBXGroup;
 			children = (
-				4F1B33531EC0A57C0056DF6E /* Helpers */,
 				4F6447DF1EAEE2A700AF559E /* AppDelegate.swift */,
+				4F1B33531EC0A57C0056DF6E /* Helpers */,
 				4F2343CE1EAF76F70010E491 /* Data */,
 				4F2343CB1EAF75A50010E491 /* Model */,
 				4F2343CD1EAF75BE0010E491 /* View */,
@@ -398,7 +395,6 @@
 				4F2343EA1EAF7B770010E491 /* ProductViewController+Handlers.swift in Sources */,
 				4F2343F31EAF7D380010E491 /* Extensions.swift in Sources */,
 				4F4B645A1EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift in Sources */,
-				4F174D671EFDB2EB00782070 /* MyController.swift in Sources */,
 				4F2343FC1EAF7EAF0010E491 /* BasketTableViewCell.swift in Sources */,
 				4F2343D21EAF77790010E491 /* TabSwitcherItemsProvider.swift in Sources */,
 				4F2343F51EAF7D520010E491 /* Protocol.swift in Sources */,

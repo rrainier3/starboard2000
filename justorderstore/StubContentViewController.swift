@@ -47,31 +47,6 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var products:[Product] = []
-        
-        let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
-        
-        let refFirebase = FIRDatabase.database().reference().child(storeID).child("products")
-        
-        refFirebase.observe(.childAdded, with: {(snapshot) in
-            
-            if let snapDictionary = snapshot.value as? [String: AnyObject] {
-                
-                let product = Product(data: snapDictionary)
-                
-                products.append(product)
-            }
-
-            self.tableView.reloadData()
-    
-    		
-        })
-        
-        for prod in products {
-            
-            print("SKU in firebase \(prod.sku)")
-        }
-
         
 // let's retrieve product images from Firebase
 // first we replace ProductItemsProvider with ProductItemsProviderURL

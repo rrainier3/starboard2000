@@ -44,6 +44,7 @@
 		4F6E64141EB0131E00B1852C /* GothamProRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F6E64131EB0131E00B1852C /* GothamProRegular.ttf */; };
 		4F808E811EB769E60074D1E0 /* ProductUpdateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F808E801EB769E60074D1E0 /* ProductUpdateController.swift */; };
 		4F84010B1EB417C9004E3F85 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F84010A1EB417C9004E3F85 /* User.swift */; };
+		4F89571C1F01714A00B5A15A /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F89571B1F01714A00B5A15A /* Service.swift */; };
 		F1396B4CD0A365FAEE06A517 /* Pods_justorderstore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38ED701522D26065E1F92A14 /* Pods_justorderstore.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		4F6E64131EB0131E00B1852C /* GothamProRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothamProRegular.ttf; sourceTree = "<group>"; };
 		4F808E801EB769E60074D1E0 /* ProductUpdateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductUpdateController.swift; sourceTree = "<group>"; };
 		4F84010A1EB417C9004E3F85 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4F89571B1F01714A00B5A15A /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		76103E489B5D2321BA8C29FC /* Pods-justorderstore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-justorderstore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-justorderstore/Pods-justorderstore.debug.xcconfig"; sourceTree = "<group>"; };
 		A99AA9B9433600A4023E0FD9 /* Pods-justorderstore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-justorderstore.release.xcconfig"; path = "Pods/Target Support Files/Pods-justorderstore/Pods-justorderstore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 				4F1B33541EC0A5920056DF6E /* Cache.swift */,
 				4F2343F21EAF7D380010E491 /* Extensions.swift */,
 				4F2343F41EAF7D520010E491 /* Protocol.swift */,
+				4F89571B1F01714A00B5A15A /* Service.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				4F4B645A1EFC5A200069A525 /* ProductItemsProviderFirebaseTest.swift in Sources */,
 				4F2343FC1EAF7EAF0010E491 /* BasketTableViewCell.swift in Sources */,
 				4F2343D21EAF77790010E491 /* TabSwitcherItemsProvider.swift in Sources */,
+				4F89571C1F01714A00B5A15A /* Service.swift in Sources */,
 				4F2343F51EAF7D520010E491 /* Protocol.swift in Sources */,
 				4F23440C1EAF829A0010E491 /* GIBadgeView.m in Sources */,
 				4F84010B1EB417C9004E3F85 /* User.swift in Sources */,

@@ -12,13 +12,18 @@ import Firebase
 
 var refTintColor: UIColor = UIColor.clear
 
-var productItems = ProductItemsProviderReturn()
+class StoreViewController: ColorMatchTabsViewController {
 
-protocol ProductsDelegate{
-    func didFetchData(data:[Product])
-}
-
-class StoreViewController: ColorMatchTabsViewController, ProductsDelegate {
+	var localProducts = [Product]()
+    
+    let errorMessageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Apologies, something went wrong. Please try again later..."
+        label.textAlignment = .center
+        label.numberOfLines = 0 	// this causes text to wrap-around
+        label.isHidden = true		// defaults to hidden = no Errors
+        return label
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -35,29 +40,23 @@ class StoreViewController: ColorMatchTabsViewController, ProductsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*
-         initiate firebase call
-      */
-      
-        DispatchQueue.main.async(execute: {
+
+        Service.sharedInstance.fetchHomeFeed { (homeDatasource, err) in
             
-            self.productsInFirebase(success: { (results) in
-                //print("Local count = \(results.count)")
-            })
+            if let err = err {
+
+				print("Error : \(err.localizedDescription)")
+                
+                return
+            }
             
-        })
-        
-        let mainQueue = DispatchQueue.main
-        let deadline = DispatchTime.now() + .seconds(10)
-        mainQueue.asyncAfter(deadline: deadline) {
-            // ...
-            
-            print("productItems = \(productItems.items.count)")
-            
+            self.localProducts = homeDatasource!
         }
         
-        // end of firebase call
+//        view.addSubview(errorMessageLabel)
+//        // UI method call convenience func fillSuperview()
+//        errorMessageLabel.fillSuperview()
+        
         
         titleLabel.font = UIFont(name: "GothamPro", size: 24)
     
@@ -68,46 +67,24 @@ class StoreViewController: ColorMatchTabsViewController, ProductsDelegate {
         dataSource = self
         reloadData()
         
-    }
+        let mainQueue = DispatchQueue.main
+        let deadline = DispatchTime.now() + .seconds(10)
+        mainQueue.asyncAfter(deadline: deadline) {
+            // ...
 
-    func productsInFirebase (success:([Product])->Void){
-        
-        let storeID = "iLCtXp27p4WL5vaVirCIwW8Eprt2"
-        let ref = FIRDatabase.database().reference().child(storeID).child("products")
-        ref.observe(.value, with: { snapshot in
-            var products: [Product] = []
-            
-            for item in snapshot.children {
+            for stuff in self.localProducts {
                 
+                print("$$$")
+                print(stuff.storeID!)
+                print(stuff.sku!)
+                print(stuff.desc!)
                 
-                if let item = item as? FIRDataSnapshot {
-                    let postDict = Product(data: item.value as! [String : AnyObject])
-                    products.append(postDict)
-                }
             }
-            self.didFetchData(data: products)
-        })
-        
-    } // end of function
-    
-    func didFetchData(data:[Product]){
-        
-        //Do what you want
-        
-        productItems.items = data
-        
-        for dot in data {
-            
-            print(dot.sku!)
-            print(dot.desc!)
-            print(dot.subdesc!)
             
         }
-        
-    } // end of function
+    }
     
 } // end of class
-
 
 
 extension StoreViewController: ColorMatchTabsViewControllerDataSource {

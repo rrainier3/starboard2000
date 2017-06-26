@@ -36,15 +36,10 @@ class StoreViewController: ColorMatchTabsViewController, ProductsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.font = UIFont(name: "GothamPro", size: 24)
-    
-        // to hide bottom button comment the following line
-        //        popoverViewController = StorePopoverViewController()
-        //        popoverViewController?.delegate = self
-        
-        dataSource = self
-        reloadData()
-        
+        /*
+         initiate firebase call
+      */
+      
         DispatchQueue.main.async(execute: {
             
             self.productsInFirebase(success: { (results) in
@@ -58,9 +53,20 @@ class StoreViewController: ColorMatchTabsViewController, ProductsDelegate {
         mainQueue.asyncAfter(deadline: deadline) {
             // ...
             
-            print("providerItems = \(productItems.items.count)")
+            print("productItems = \(productItems.items.count)")
             
         }
+        
+        // end of firebase call
+        
+        titleLabel.font = UIFont(name: "GothamPro", size: 24)
+    
+        // to hide bottom button comment the following line
+        //        popoverViewController = StorePopoverViewController()
+        //        popoverViewController?.delegate = self
+        
+        dataSource = self
+        reloadData()
         
     }
 

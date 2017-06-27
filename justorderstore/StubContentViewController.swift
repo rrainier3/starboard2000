@@ -54,7 +54,7 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         mainQueue.asyncAfter(deadline: deadline) {
             
             // ...
-            print("$ LiveStubs = \(LiveProducts.sharedInstance.items?.count)")
+            print("$ LiveStubs = \(LiveProducts.sharedInstance.items!.count)")
 
 			let filterProducts = LiveProducts.sharedInstance.items
             let products69 = filterProducts?.filter({ $0.category == "Noodles" })

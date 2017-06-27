@@ -57,7 +57,7 @@ class StoreViewController: ColorMatchTabsViewController {
 //        errorMessageLabel.fillSuperview()
         
         
-        titleLabel.font = UIFont(name: "GothamPro", size: 24)
+        titleLabel.font = UIFont(name: "GothamPro", size: 22)
     
         // to hide bottom button comment the following line
         //        popoverViewController = StorePopoverViewController()
@@ -106,13 +106,13 @@ extension StoreViewController: ColorMatchTabsViewControllerDataSource {
         switch index {
             
         case 1:
-            titleLabel.text = "HONG-NING"
+            titleLabel.text = "VEGGIES"
         case 2:
-            titleLabel.text = "JO-FEN"
+            titleLabel.text = "NOODLES"
         case 3:
-            titleLabel.text = "STARBUCKS"
+            titleLabel.text = "HOTFOOD"
         default:
-            titleLabel.text = "WHOLEFOODS"
+            titleLabel.text = "GRILLED"
             
         }
         

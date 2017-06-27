@@ -52,18 +52,9 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         let mainQueue = DispatchQueue.main
         let deadline = DispatchTime.now() + .seconds(10)
         mainQueue.asyncAfter(deadline: deadline) {
+            
             // ...
-            
             print("$ LiveStubs = \(LiveProducts.sharedInstance.items?.count)")
-            
-//            for stuff in LiveProducts.sharedInstance.items! {
-//                
-//                print("$ LiveStubs! $")
-//                print(stuff.storeID!)
-//                print(stuff.sku!)
-//                print(stuff.desc!)
-//                
-//            }
 
 			let filterProducts = LiveProducts.sharedInstance.items
             let products69 = filterProducts?.filter({ $0.category == "Noodles" })
@@ -84,35 +75,13 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
             
             self.setupTableView()
 
-
         }
-        
-// let's retrieve product images from Firebase
-// first we replace ProductItemsProvider with ProductItemsProviderURL
-
-//        let filterProducts = ProductItemsProvider.items
 
 // *        let filterProducts = ProductItemsProviderURL.items
         //        let products69 = filterProducts.filter({ $0.price == 3995 })
         //        let products49 = filterProducts.filter({ $0.price == 6000 })
         //        let products100 = filterProducts.filter({ $0.price == 1000 })
         //        let products45 = filterProducts.filter({ $0.price == 4500 })
-
-//		let filterProducts = ProductItemsProviderFirebaseTest.items
-        
-//                let products69 = filterProducts.filter({ $0.price == 3995 })
-//                let products49 = filterProducts.filter({ $0.price == 6000 })
-//                let products100 = filterProducts.filter({ $0.price == 1000 })
-//                let products45 = filterProducts.filter({ $0.price == 4500 })
-        
-
-//        let products69 = filterProducts.filter({ $0.category == "Noodles" })
-//        let products49 = filterProducts.filter({ $0.category == "Grilled" })
-//        let products100 = filterProducts.filter({ $0.category == "Veggies" })
-//        let products45 = filterProducts.filter({ $0.category == "HotFood" })
-        
-        
-//        setupTableView()
         
         //setupDataSource()
         

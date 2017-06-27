@@ -50,22 +50,6 @@ class StoreViewController: ColorMatchTabsViewController {
             
             LiveProducts.sharedInstance.items = homeDatasource!
         }
-
-//        let mainQueue = DispatchQueue.main
-//        let deadline = DispatchTime.now() + .seconds(10)
-//        mainQueue.asyncAfter(deadline: deadline) {
-//            // ...
-//
-//            for stuff in LiveProducts.sharedInstance.items! {
-//
-//                print("$ LiveProducts $")
-//                print(stuff.storeID!)
-//                print(stuff.sku!)
-//                print(stuff.desc!)
-//                
-//            }
-//            
-//        }
         
         
 //        view.addSubview(errorMessageLabel)

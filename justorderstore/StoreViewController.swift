@@ -13,8 +13,6 @@ import Firebase
 var refTintColor: UIColor = UIColor.clear
 
 class StoreViewController: ColorMatchTabsViewController {
-
-	var localProducts = [Product]()
     
     let errorMessageLabel: UILabel = {
         let label = UILabel()
@@ -44,14 +42,31 @@ class StoreViewController: ColorMatchTabsViewController {
         Service.sharedInstance.fetchHomeFeed { (homeDatasource, err) in
             
             if let err = err {
-
-				print("Error : \(err.localizedDescription)")
+                
+                print("Error : \(err.localizedDescription)")
                 
                 return
             }
             
-            self.localProducts = homeDatasource!
+            LiveProducts.sharedInstance.items = homeDatasource!
         }
+
+//        let mainQueue = DispatchQueue.main
+//        let deadline = DispatchTime.now() + .seconds(10)
+//        mainQueue.asyncAfter(deadline: deadline) {
+//            // ...
+//
+//            for stuff in LiveProducts.sharedInstance.items! {
+//
+//                print("$ LiveProducts $")
+//                print(stuff.storeID!)
+//                print(stuff.sku!)
+//                print(stuff.desc!)
+//                
+//            }
+//            
+//        }
+        
         
 //        view.addSubview(errorMessageLabel)
 //        // UI method call convenience func fillSuperview()
@@ -67,21 +82,6 @@ class StoreViewController: ColorMatchTabsViewController {
         dataSource = self
         reloadData()
         
-        let mainQueue = DispatchQueue.main
-        let deadline = DispatchTime.now() + .seconds(10)
-        mainQueue.asyncAfter(deadline: deadline) {
-            // ...
-
-            for stuff in self.localProducts {
-                
-                print("$$$")
-                print(stuff.storeID!)
-                print(stuff.sku!)
-                print(stuff.desc!)
-                
-            }
-            
-        }
     }
     
 } // end of class

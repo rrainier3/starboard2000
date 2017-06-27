@@ -31,6 +31,37 @@ class ProductItemsProviderReturn {
     
 }
 
+final class LiveProducts {
+    
+    // MARK: Shared Instance
+    
+    static var sharedInstance = LiveProducts()
+    
+    // Can't init is singleton
+    private init() { }
+    
+    // MARK: Local Variable
+    
+    var items:[Product]?
+}
+
+/*
+ class CardName {
+ static var sharedInstance = CardName()
+ private init() {}
+ 
+ var cardName: String?
+ 
+ }
+ 
+ Please just use this to save a value:
+ 
+ CardName.sharedInstance.cardName = "something"
+ 
+ And this to read the value:
+ 
+ CardName.sharedInstance.cardName
+*/
 
 
 

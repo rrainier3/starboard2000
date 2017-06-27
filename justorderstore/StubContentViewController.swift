@@ -15,6 +15,8 @@ var flyingProduct: Product!
 
 class StubContentViewController: UITableViewController, ChangeViewProtocol {
     
+	var localProducts:[Product] = []
+
     enum `Type` {
         case products, venues, reviews, users
     }
@@ -46,7 +48,44 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let mainQueue = DispatchQueue.main
+        let deadline = DispatchTime.now() + .seconds(10)
+        mainQueue.asyncAfter(deadline: deadline) {
+            // ...
+            
+            print("$ LiveStubs = \(LiveProducts.sharedInstance.items?.count)")
+            
+//            for stuff in LiveProducts.sharedInstance.items! {
+//                
+//                print("$ LiveStubs! $")
+//                print(stuff.storeID!)
+//                print(stuff.sku!)
+//                print(stuff.desc!)
+//                
+//            }
 
+			let filterProducts = LiveProducts.sharedInstance.items
+            let products69 = filterProducts?.filter({ $0.category == "Noodles" })
+            let products49 = filterProducts?.filter({ $0.category == "Grilled" })
+            let products100 = filterProducts?.filter({ $0.category == "Veggies" })
+            let products45 = filterProducts?.filter({ $0.category == "HotFood" })
+            // setup
+            switch self.type! {
+            case .products:
+                self.objects = products69!
+            case .users:
+                self.objects = products49!
+            case .reviews:
+                self.objects = products100!
+            case .venues:
+                self.objects = products45!
+            }
+            
+            self.setupTableView()
+
+
+        }
         
 // let's retrieve product images from Firebase
 // first we replace ProductItemsProvider with ProductItemsProviderURL
@@ -59,7 +98,7 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         //        let products100 = filterProducts.filter({ $0.price == 1000 })
         //        let products45 = filterProducts.filter({ $0.price == 4500 })
 
-		let filterProducts = ProductItemsProviderFirebaseTest.items
+//		let filterProducts = ProductItemsProviderFirebaseTest.items
         
 //                let products69 = filterProducts.filter({ $0.price == 3995 })
 //                let products49 = filterProducts.filter({ $0.price == 6000 })
@@ -67,25 +106,13 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
 //                let products45 = filterProducts.filter({ $0.price == 4500 })
         
 
-        let products69 = filterProducts.filter({ $0.category == "Noodles" })
-        let products49 = filterProducts.filter({ $0.category == "Grilled" })
-        let products100 = filterProducts.filter({ $0.category == "Veggies" })
-        let products45 = filterProducts.filter({ $0.category == "HotFood" })
+//        let products69 = filterProducts.filter({ $0.category == "Noodles" })
+//        let products49 = filterProducts.filter({ $0.category == "Grilled" })
+//        let products100 = filterProducts.filter({ $0.category == "Veggies" })
+//        let products45 = filterProducts.filter({ $0.category == "HotFood" })
         
         
-        setupTableView()
-        
-        // setup
-        switch type! {
-        case .products:
-            self.objects = products69
-        case .users:
-            self.objects = products49
-        case .reviews:
-            self.objects = products100
-        case .venues:
-            self.objects = products45
-        }
+//        setupTableView()
         
         //setupDataSource()
         

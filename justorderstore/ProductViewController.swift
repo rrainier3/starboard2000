@@ -274,6 +274,10 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
 
 /*
      Firebase database update ...
+     
+     let ref = FIRDatabase.database().reference()
+     let userRef = ref.("location").child("-Khpr_PAuGSVngNspTVW")
+     userRef.updateChildValues(["lat": 11.324231])
 */
     
     func persistProductIntoFirebase(_ product: Product) {

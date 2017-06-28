@@ -271,6 +271,10 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
             present(ac, animated: true)
         }
     }
+
+/*
+     Firebase database update ...
+*/
     
     func persistProductIntoFirebase(_ product: Product) {
         
@@ -280,7 +284,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         
         let key = ref.child(uidStore).childByAutoId().key
         
-        let imageRef = storage.child("stores").child(uidStore).child("\(key).jpg")
+        let imageRef = storage.child(uidStore).child("\(key).jpg")
         
         let data = UIImageJPEGRepresentation(imageView.image!, 0.3)
         
@@ -318,7 +322,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
                     
                     let productFeed = ["\(key)" : feed]
                     
-                    ref.child("stores").child(uidStore).updateChildValues(productFeed)
+                    ref.child(uidStore).child("products").updateChildValues(productFeed)
                     
                 }
             })

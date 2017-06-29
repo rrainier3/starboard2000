@@ -200,6 +200,7 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
 		Implement Firebase persistence here ...
 */
         let newProduct = Product(data:[
+        	"key": flyingProduct.key as AnyObject,
             "sku": "1234577" as AnyObject,
             "desc": productL as AnyObject,
             "subdesc": productSubL as AnyObject,

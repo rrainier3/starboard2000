@@ -127,6 +127,7 @@ extension ProductViewController {
     	let generatedSKU = NSUUID().uuidString
         
         let productStage = Product(data:[
+        	"key": flyingProduct.key as AnyObject,
             "sku": generatedSKU as AnyObject,
             "desc": self.productLabel.text as AnyObject,
             "subdesc": self.productSubLabel.text as AnyObject,

@@ -10,6 +10,7 @@ import UIKit
 
 class Product: NSObject {
     
+	var key: String?
     var sku: String?
     var desc: String?
     var subdesc: String?
@@ -24,6 +25,7 @@ class Product: NSObject {
     
     /*
      Introduce new init() to avoid crashing due to adding props
+     key: -Kmadfoipuo12ldflkj
      active:     1
      category:     "Noodles"
      desc:     "Asian Cucumber Salad"
@@ -43,6 +45,7 @@ class Product: NSObject {
     init(data: [String: AnyObject]) {
         super.init()
         
+        key = data["key"] as? String
         sku = data["sku"] as? String
         desc = data["desc"] as? String
         subdesc = data["subdesc"] as? String

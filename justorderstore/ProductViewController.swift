@@ -311,6 +311,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
             imageRef.downloadURL(completion: { (url, error) in
                 if let url = url {
                     let feed = [
+                    	"key": product.key!,
                         "storeID" : uidStore,
                         "sku": product.sku!,
                         "desc": product.desc!,

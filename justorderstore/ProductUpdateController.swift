@@ -90,13 +90,40 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         return tv
     }()
 
+    let productNewSwitch: TTSegmentedControl = {
+        let productNewSwitch = TTSegmentedControl()
+        productNewSwitch.itemTitles = ["NEW","EDIT"]
+        productNewSwitch.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
+        productNewSwitch.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
+        productNewSwitch.useGradient = false
+        productNewSwitch.thumbColor = TTSegmentedControl.UIColorFromRGB(0x1FDB58)
+        productNewSwitch.useShadow = true
+        productNewSwitch.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x56D37C)
+        productNewSwitch.allowChangeThumbWidth = false
+        
+        return productNewSwitch
+    }()
+
+    let productActiveSwitch: TTSegmentedControl = {
+        let productActiveSwitch = TTSegmentedControl()
+        productActiveSwitch.itemTitles = ["ACTIVE","OFF"]
+        productActiveSwitch.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
+        productActiveSwitch.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
+        productActiveSwitch.useGradient = false
+        productActiveSwitch.thumbColor = TTSegmentedControl.UIColorFromRGB(0x1FDB58)
+        productActiveSwitch.useShadow = true
+        productActiveSwitch.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x56D37C)
+        productActiveSwitch.allowChangeThumbWidth = false
+        
+        return productActiveSwitch
+    }()
     
     let productUpdateButton: UpdateJitterButton = {
         
         let button = UpdateJitterButton(type: .system)
         button.backgroundColor = UIColor.lightGray.withAlphaComponent(0.8)
         
-        button.setTitle("U P D A T E", for: .normal)
+        button.setTitle("C O N T I N U E", for: .normal)
         button.setTitleColor(UIColor.white.withAlphaComponent(0.7), for: .normal)
         
         button.titleLabel?.font = UIFont(name: "GothamPro", size: 18)
@@ -143,6 +170,8 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         setupProductTitleField()
         setupProductSubTitleField()
         setupProductDescriptionText()
+        setupProductNewSwitch()
+        setupProductActiveSwitch()
         setupProductUpdateButton()
     }
     
@@ -191,10 +220,13 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
             return
         }
         
-        print(productL)
-        print(productSubL)
+
         print(productDescription.text)
         print(error, error2)
+        
+        print("The product switch = \(productNewSwitch.description)")
+        
+        print(productNewSwitch.currentIndex)
         
 /*
 		Implement Firebase persistence here ...
@@ -260,7 +292,25 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         
         self.view.addSubview(productDescription)
         
-        _ = productDescription.anchor(productSubLabel.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 80, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 140)
+        _ = productDescription.anchor(productSubLabel.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 140)
+    }
+    
+    func setupProductNewSwitch() {
+        
+        let width:CGFloat = 16.00
+        
+        self.view.addSubview(productNewSwitch)
+        
+        _ = productNewSwitch.anchor(productDescription.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 32)
+    }
+
+    func setupProductActiveSwitch() {
+        
+        let width:CGFloat = 16.00
+        
+        self.view.addSubview(productActiveSwitch)
+        
+        _ = productActiveSwitch.anchor(productDescription.bottomAnchor, left: nil, bottom: nil, right: productDescription.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 120, widthConstant: width, heightConstant: 32)
     }
     
     override func didReceiveMemoryWarning() {

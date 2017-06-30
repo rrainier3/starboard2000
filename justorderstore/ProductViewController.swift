@@ -307,11 +307,14 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
                 print(error!.localizedDescription)
                 return
             }
-            
+         
+        // note: key should be retained on Update! *******************************
+        //  below key is on Insert mode					*******************************
+        
             imageRef.downloadURL(completion: { (url, error) in
                 if let url = url {
                     let feed = [
-                    	"key": product.key!,
+                    	"key": key,
                         "storeID" : uidStore,
                         "sku": product.sku!,
                         "desc": product.desc!,

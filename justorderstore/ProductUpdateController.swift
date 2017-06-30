@@ -92,7 +92,7 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
 
     let productNewSwitch: TTSegmentedControl = {
         let productNewSwitch = TTSegmentedControl()
-        productNewSwitch.itemTitles = ["NEW","EDIT"]
+        productNewSwitch.itemTitles = ["EDIT","NEW"]
         productNewSwitch.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
         productNewSwitch.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
         productNewSwitch.useGradient = false
@@ -106,7 +106,7 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
 
     let productActiveSwitch: TTSegmentedControl = {
         let productActiveSwitch = TTSegmentedControl()
-        productActiveSwitch.itemTitles = ["ACTIVE","OFF"]
+        productActiveSwitch.itemTitles = ["ON","OFF"]
         productActiveSwitch.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
         productActiveSwitch.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
         productActiveSwitch.useGradient = false
@@ -310,7 +310,7 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         
         self.view.addSubview(productActiveSwitch)
         
-        _ = productActiveSwitch.anchor(productDescription.bottomAnchor, left: nil, bottom: nil, right: productDescription.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 120, widthConstant: width, heightConstant: 32)
+        _ = productActiveSwitch.anchor(productDescription.bottomAnchor, left: productDescription.centerXAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 32)
     }
     
     override func didReceiveMemoryWarning() {

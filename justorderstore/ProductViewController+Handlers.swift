@@ -48,7 +48,7 @@ extension ProductViewController {
         
         // 722x520/2 pixel size applied to heightConstant
         _ = imageView.anchor(containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 520/2)
-        
+
         containerView.addSubview(lineSeparatorView)
         
         _ = lineSeparatorView.anchor(imageView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
@@ -208,36 +208,85 @@ extension ProductViewController {
         
         let leftButton =  UIBarButtonItem(image: UIImage(named: "left-arrow"), style: .plain, target: self, action: #selector(triggerLeftButton))
         
-        let rightButton = UIButton(type: .custom)
+
+        // display edit button on right of navigation bar
+        let editButton = UIButton(type: .system)
+        editButton.setImage(#imageLiteral(resourceName: "edit-icon"), for: .normal)
+        editButton.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
         
-		if user1.type == .Admin {
-            // let's setup the rightButton for our photoFunctionHandler
-            let imageSize:CGSize = CGSize(width: 30, height: 28)
-            //let rightButton = UIButton(type: .custom)
-            rightButton.frame = CGRect(x: 120, y: 96, width: 30, height: 28)
-            rightButton.setImage(#imageLiteral(resourceName: "camera_trans"), for: .normal)
-            rightButton.imageEdgeInsets = UIEdgeInsetsMake(rightButton.frame.size.height/2 - imageSize.height/2, rightButton.frame.size.width/2 - imageSize.width/2, rightButton.frame.size.height/2 - imageSize.height/2, rightButton.frame.size.width/2 - imageSize.width/2)
-            
-            rightButton.addTarget(self, action: #selector(photoFunctionHandler), for: .touchUpInside)
-        } else {
-            // let's setup the rightButton for our basket
-            let imageSize:CGSize = CGSize(width: 24, height: 24)
-            //let rightButton = UIButton(type: .custom)
-            rightButton.frame = CGRect(x: 96, y: 96, width: 26, height: 26)
-            rightButton.setImage(#imageLiteral(resourceName: "basket3"), for: .normal)
-            rightButton.imageEdgeInsets = UIEdgeInsetsMake(rightButton.frame.size.height/2 - imageSize.height/2, rightButton.frame.size.width/2 - imageSize.width/2, rightButton.frame.size.height/2 - imageSize.height/2, rightButton.frame.size.width/2 - imageSize.width/2)
-            
-            rightButton.addTarget(self, action: #selector(handleBasketButton), for: .touchUpInside)
-            
-            // setup the badge on the basket with counter!
-            giBadgeView.badgeValue = basket.count
-            rightButton.addSubview(giBadgeView)
-        }
+        editButton.imageEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: -6.0)
+        
+        editButton.addTarget(self, action: #selector(handleEditButton), for: .touchUpInside)
+
+        // display camera button on right of navigation bar
+        let cameraButton = UIButton(type: .system)
+        cameraButton.setImage(#imageLiteral(resourceName: "camera_trans"), for: .normal)
+        cameraButton.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        
+        // display addPlus button on right of navigation bar
+        let addPlusButton = UIButton(type: .system)
+        addPlusButton.setImage(#imageLiteral(resourceName: "add-plus"), for: .normal)
+        addPlusButton.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
+        
+        addPlusButton.addTarget(self, action: #selector(handlePlusButton), for: .touchUpInside)
+        
+        addPlusButton.imageEdgeInsets = UIEdgeInsets(top: 0.0, left: -6.0, bottom: 0.0, right: 0.0)
+        
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: addPlusButton), UIBarButtonItem(customView: editButton)]
+
+        
+//		if user1.type == .Admin {
+//            // let's setup the rightButton for our photoFunctionHandler
+//            let imageSize:CGSize = CGSize(width: 30, height: 28)
+//            //let rightButton = UIButton(type: .custom)
+//            rightButton.frame = CGRect(x: 96, y: 96, width: 30, height: 28)
+//            rightButton.setImage(#imageLiteral(resourceName: "camera_trans"), for: .normal)
+//            rightButton.imageEdgeInsets = UIEdgeInsetsMake(rightButton.frame.size.height/2 - imageSize.height/2, rightButton.frame.size.width/2 - imageSize.width/2, rightButton.frame.size.height/2 - imageSize.height/2, rightButton.frame.size.width/2 - imageSize.width/2)
+//            
+//            rightButton.addTarget(self, action: #selector(photoFunctionHandler), for: .touchUpInside)
+//        } else {
+//            // let's setup the rightButton for our basket
+//            let imageSize:CGSize = CGSize(width: 24, height: 24)
+//            //let rightButton = UIButton(type: .custom)
+//            rightButton.frame = CGRect(x: 96, y: 96, width: 26, height: 26)
+//            rightButton.setImage(#imageLiteral(resourceName: "basket3"), for: .normal)
+//            rightButton.imageEdgeInsets = UIEdgeInsetsMake(rightButton.frame.size.height/2 - imageSize.height/2, rightButton.frame.size.width/2 - imageSize.width/2, rightButton.frame.size.height/2 - imageSize.height/2, rightButton.frame.size.width/2 - imageSize.width/2)
+//            
+//            rightButton.addTarget(self, action: #selector(handleBasketButton), for: .touchUpInside)
+//            
+//            // setup the badge on the basket with counter!
+//            giBadgeView.badgeValue = basket.count
+//            rightButton.addSubview(giBadgeView)
+//        }
+
+		// setup rightButton2
+//        let rightButton2 = UIButton(type: .custom)
+//        let imageSize2:CGSize = CGSize(width: 48, height: 48)
+//        rightButton2.frame = CGRect(x: 120, y: 96, width: 48, height: 48)
+//        rightButton2.setImage(#imageLiteral(resourceName: "add-plus"), for: .normal)
+//        rightButton2.imageEdgeInsets = UIEdgeInsetsMake(rightButton2.frame.size.height/2 - imageSize2.height/2, rightButton2.frame.size.width/2 - imageSize2.width/2, rightButton2.frame.size.height/2 - imageSize2.height/2, rightButton2.frame.size.width/2 - imageSize2.width/2)
+//        rightButton2.addTarget(self, action: #selector(handlePlusButton), for: .touchUpInside)
+
 
         navigationItem.leftBarButtonItem = leftButton
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton2)
+        
+        //navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: rightButton2), UIBarButtonItem(customView: rightButton)]
+        
         
     }
+    
+    func handlePlusButton() {
+        print("Plus Button pressed!")
+    }
+    
+    func handleEditButton() {
+        print("Edit Button pressed!")
+    }
+/*
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: composeButton),UIBarButtonItem(customView: searchButton)]
+*/
+
     
     @objc fileprivate func triggerLeftButton() {
         dismiss(animated: true, completion: nil)

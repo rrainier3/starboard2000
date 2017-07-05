@@ -100,6 +100,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         return iv
     }()
     
+    
     let productLabel: UILabel = {
         let label = UILabel()
         label.text = "Ultimate Product"
@@ -162,8 +163,6 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.addTarget(self, action: #selector(handleSaveButton), for: .touchUpInside)
-
-        //button.addTarget(self, action: #selector(handleAddButton), for: .touchUpInside)
         
         return button
     }()
@@ -186,6 +185,14 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         imageView.isUserInteractionEnabled = true
         
     }
+
+/*
+	Note: setupGestureRecognizers() will now point to photoFunctionHandler()
+    this is because we have introduced new UIBarButtonItems [editButton, addPlusButton]
+    
+    please implement .... RR 07/05/17
+*/
+
     
     func handleTapRecognition1() {
         
@@ -309,7 +316,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
             }
          
         // note: key should be retained on Update! *******************************
-        //  below key is on Insert mode					*******************************
+        //  below key is on Insert mode	 via .childByAutoId()  ******************************
         
             imageRef.downloadURL(completion: { (url, error) in
                 if let url = url {

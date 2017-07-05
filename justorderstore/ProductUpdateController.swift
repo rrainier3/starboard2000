@@ -227,6 +227,7 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         print("The product switch = \(productNewSwitch.description)")
         
         print(productNewSwitch.currentIndex)
+        print(productActiveSwitch.currentIndex)
         
 /*
 		Implement Firebase persistence here ...
@@ -287,6 +288,8 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
     }
     
     func setupProductDescriptionText() {
+    
+    	self.productDescription.text = flyingProduct.extendedtext
     
         let width = self.view.bounds.width - 60
         

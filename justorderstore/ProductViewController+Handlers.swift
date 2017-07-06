@@ -216,11 +216,6 @@ extension ProductViewController {
         
         navigationItem.leftBarButtonItem = leftButton
 
-//        // display camera button on right of navigation bar
-//        let cameraButton = UIButton(type: .system)
-//        cameraButton.setImage(#imageLiteral(resourceName: "camera_trans"), for: .normal)
-//        cameraButton.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-
 		if user1.type == .Admin {
         
             // Add display edit button on right of navigation bar

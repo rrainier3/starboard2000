@@ -56,20 +56,22 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     let segmentedControl: TTSegmentedControl = {
-        let segmentedControl = TTSegmentedControl()
-        segmentedControl.allowChangeThumbWidth = false
-        segmentedControl.frame = CGRect(x: 50, y: 200, width: 100, height: 50)
+        let segmentedControlX = TTSegmentedControl()
+        segmentedControlX.allowChangeThumbWidth = false
+        segmentedControlX.frame = CGRect(x: 50, y: 200, width: 100, height: 50)
         // segmentedControl 3 type
-        segmentedControl.allowChangeThumbWidth = false
-        segmentedControl.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
-        segmentedControl.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
-        segmentedControl.useGradient = true
-        segmentedControl.useShadow = true
-        segmentedControl.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x22C6E7)
+        segmentedControlX.allowChangeThumbWidth = false
+        segmentedControlX.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
+        segmentedControlX.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
+        segmentedControlX.useGradient = true
+        segmentedControlX.useShadow = true
+        segmentedControlX.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x22C6E7)
         //segmentedControl.thumbGradientColors = [ TTSegmentedControl.UIColorFromRGB(0x25D0EC), TTSegmentedControl.UIColorFromRGB(0x1EA3D8)]
-        segmentedControl.thumbGradientColors = [refTintColor, refTintColor]
+        segmentedControlX.thumbGradientColors = [refTintColor, refTintColor]
         
-        return segmentedControl
+        segmentedControlX.translatesAutoresizingMaskIntoConstraints = false
+        
+        return segmentedControlX
     }()
     
     let priceLabel: UILabel = {
@@ -180,7 +182,9 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     
     func setupGestureRecognizers() {
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition1))
+        //let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapRecognition1))
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(photoFunctionHandler))
         imageView.addGestureRecognizer(tap)
         imageView.isUserInteractionEnabled = true
         
@@ -189,14 +193,31 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
 /*
 	Note: setupGestureRecognizers() will now point to photoFunctionHandler()
     this is because we have introduced new UIBarButtonItems [editButton, addPlusButton]
+    which will now take care of handleTapRecognition1().  This will have to be modified to handle
+    update/create flags.
     
     please implement .... RR 07/05/17
 */
 
-    
-    func handleTapRecognition1() {
+    func handlePlusButton() {
         
-        let updateVC = UINavigationController(rootViewController: ProductUpdateController())
+        let productUpdateVC = ProductUpdateController()
+        
+        productUpdateVC.operation = .Create
+        
+        let presentingVC = UINavigationController(rootViewController: productUpdateVC)
+        self.navigationController?.present(presentingVC, animated: true, completion: nil)
+        
+        return
+    }
+    
+    func handleEditButton() {
+        
+        let productUpdateVC = ProductUpdateController()
+        
+        productUpdateVC.operation = .Update
+        
+        let updateVC = UINavigationController(rootViewController: productUpdateVC)
         
         updateVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         
@@ -204,6 +225,21 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         
         return
     }
+    
+/*
+		FUNCTION TO BE DEPRECATED ...
+*/
+//    func handleTapRecognition1() {
+//        
+//        let updateVC = UINavigationController(rootViewController: ProductUpdateController())
+//        
+//        updateVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+//        
+//        present(updateVC, animated: true, completion: nil)
+//        
+//        return
+//
+//    }
 
 /*
     Photo function handlers for Admin Use

@@ -35,6 +35,8 @@ extension ProductViewController {
     
     func setupViews() {
         
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
         self.view.addSubview(containerView)
         
         containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
@@ -57,6 +59,7 @@ extension ProductViewController {
 //		productLabel.text = xproduct?.desc
     
         productLabel.font = UIFont(name: "GothamPro", size: 18)
+        
         containerView.addSubview(productLabel)
         
         _ = productLabel.anchor(lineSeparatorView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 12, leftConstant: 4, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
@@ -65,6 +68,7 @@ extension ProductViewController {
 //		productSubLabel.text = xproduct?.subdesc
         
         productSubLabel.font = UIFont(name: "GothamPro", size: 15)
+        
         containerView.addSubview(productSubLabel)
         
         _ = productSubLabel.anchor(productLabel.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 3, leftConstant: 4, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
@@ -74,6 +78,7 @@ extension ProductViewController {
         let thisMoney = Money(minorUnits: flyingProduct.price!)
         priceLabel.text = "\(thisMoney)"
         priceLabel.font = UIFont(name: "GothamPro", size: 22)
+        
         containerView.addSubview(priceLabel)
         
         _ = priceLabel.anchor(productLabel.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 8, widthConstant: 0, heightConstant: 0)
@@ -87,13 +92,14 @@ extension ProductViewController {
         
         containerView.addSubview(segmentedControl)
         
-        _ = segmentedControl.anchor(productSubLabel.bottomAnchor, left: productSubLabel.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 16, leftConstant: 8, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 40)
+        _ = segmentedControl.anchor(containerView.centerYAnchor, left: productLabel.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 26, leftConstant: 8, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 40)
 
 		textView.text = flyingProduct.extendedtext
         textView.font = UIFont(name: "GothamPro", size: 15)
+        
         containerView.addSubview(textView)
         
-        _ = textView.anchor(segmentedControl.bottomAnchor, left: productSubLabel.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 10, leftConstant: -2, bottomConstant: 0, rightConstant: 2, widthConstant: 0, heightConstant: 0)
+        _ = textView.anchor(containerView.centerYAnchor, left: productLabel.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 66, leftConstant: 0, bottomConstant: 0, rightConstant: 2, widthConstant: 0, heightConstant: 0)
         
         containerView.addSubview(addButton)
         
@@ -275,14 +281,7 @@ extension ProductViewController {
         
         
     }
-    
-    func handlePlusButton() {
-        print("Plus Button pressed!")
-    }
-    
-    func handleEditButton() {
-        print("Edit Button pressed!")
-    }
+
 /*
         navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: composeButton),UIBarButtonItem(customView: searchButton)]
 */

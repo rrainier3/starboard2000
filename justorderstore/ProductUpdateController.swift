@@ -17,8 +17,18 @@ class UpdateJitterButton: UIButton, Jitterable {
     
 }
 
-class ProductUpdateController: UIViewController, UITextViewDelegate, UITextFieldDelegate, Jitterable {
+class ProductUpdateController: UIViewController, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate, Jitterable {
 
+    enum OpType {
+        case Update
+        case Create
+        
+        init() {
+            self = .Update
+        }
+    }
+    
+    var operation = OpType()
     
     let productLabel: SkyFloatingLabelTextField = {
         let product_label = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 200, height: 45))
@@ -90,32 +100,19 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         return tv
     }()
 
-    let productNewSwitch: TTSegmentedControl = {
-        let productNewSwitch = TTSegmentedControl()
-        productNewSwitch.itemTitles = ["EDIT","NEW"]
-        productNewSwitch.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
-        productNewSwitch.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
-        productNewSwitch.useGradient = false
-        productNewSwitch.thumbColor = TTSegmentedControl.UIColorFromRGB(0x1FDB58)
-        productNewSwitch.useShadow = true
-        productNewSwitch.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x56D37C)
-        productNewSwitch.allowChangeThumbWidth = false
-        
-        return productNewSwitch
-    }()
-
     let productActiveSwitch: TTSegmentedControl = {
-        let productActiveSwitch = TTSegmentedControl()
-        productActiveSwitch.itemTitles = ["ON","OFF"]
-        productActiveSwitch.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
-        productActiveSwitch.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
-        productActiveSwitch.useGradient = false
-        productActiveSwitch.thumbColor = TTSegmentedControl.UIColorFromRGB(0x1FDB58)
-        productActiveSwitch.useShadow = true
-        productActiveSwitch.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x56D37C)
-        productActiveSwitch.allowChangeThumbWidth = false
+        let productActiveSwitchX = TTSegmentedControl()
+        productActiveSwitchX.itemTitles = ["ON","OFF"]
+        productActiveSwitchX.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
+        productActiveSwitchX.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
+        productActiveSwitchX.useGradient = false
+        productActiveSwitchX.thumbColor = TTSegmentedControl.UIColorFromRGB(0x1FDB58)
+        productActiveSwitchX.useShadow = true
+        productActiveSwitchX.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x56D37C)
+        productActiveSwitchX.allowChangeThumbWidth = false
+        productActiveSwitchX.translatesAutoresizingMaskIntoConstraints = false
         
-        return productActiveSwitch
+        return productActiveSwitchX
     }()
     
     let productUpdateButton: UpdateJitterButton = {
@@ -149,6 +146,9 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         }
         
         if allowed == false { return }
+        
+        print("OpType Enum: \(operation)")
+        
     }
     
     override func viewDidLoad() {
@@ -170,7 +170,7 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         setupProductTitleField()
         setupProductSubTitleField()
         setupProductDescriptionText()
-        setupProductNewSwitch()
+
         setupProductActiveSwitch()
         setupProductUpdateButton()
     }
@@ -223,10 +223,7 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
 
         print(productDescription.text)
         print(error, error2)
-        
-        print("The product switch = \(productNewSwitch.description)")
-        
-        print(productNewSwitch.currentIndex)
+        print("ProductActive Switch:")
         print(productActiveSwitch.currentIndex)
         
 /*
@@ -266,6 +263,10 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
     
     	self.productLabel.text = flyingProduct.desc
         
+        if operation == .Create {
+            self.productLabel.text = ""
+        }
+        
         self.productLabel.delegate = self
         
         let width = self.view.bounds.width - 60
@@ -277,6 +278,10 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
     func setupProductSubTitleField() {
     
     	self.productSubLabel.text = flyingProduct.subdesc
+        
+        if operation == .Create {
+            self.productSubLabel.text = ""
+        }
         
         self.productSubLabel.delegate = self
         
@@ -290,6 +295,10 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
     func setupProductDescriptionText() {
     
     	self.productDescription.text = flyingProduct.extendedtext
+
+        if operation == .Create {
+            self.productDescription.text = ""
+        }
     
         let width = self.view.bounds.width - 60
         
@@ -297,23 +306,14 @@ class ProductUpdateController: UIViewController, UITextViewDelegate, UITextField
         
         _ = productDescription.anchor(productSubLabel.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 140)
     }
-    
-    func setupProductNewSwitch() {
-        
-        let width:CGFloat = 16.00
-        
-        self.view.addSubview(productNewSwitch)
-        
-        _ = productNewSwitch.anchor(productDescription.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 32)
-    }
 
     func setupProductActiveSwitch() {
         
-        let width:CGFloat = 16.00
-        
-        self.view.addSubview(productActiveSwitch)
-        
-        _ = productActiveSwitch.anchor(productDescription.bottomAnchor, left: productDescription.centerXAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 32)
+//        let width:CGFloat = 16.00
+//        
+//        self.view.addSubview(productActiveSwitch)
+//        
+//        _ = productActiveSwitch.anchor(productDescription.bottomAnchor, left: self.view.centerXAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 32)
     }
     
     override func didReceiveMemoryWarning() {

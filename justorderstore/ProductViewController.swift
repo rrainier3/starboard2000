@@ -14,7 +14,6 @@ import GradientCircularProgress
 
 class ProductViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-//    var product: Product?
     var imagePicker: UIImagePickerController?
     
     var xproduct: Product? {
@@ -42,7 +41,6 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     override func viewWillAppear(_ animated: Bool) {
     
         giBadgeView.badgeValue = basket.count			// reEntrant before viewDidLoad
-
         
     }
     

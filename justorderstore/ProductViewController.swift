@@ -223,21 +223,6 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         
         return
     }
-    
-/*
-		FUNCTION TO BE DEPRECATED ...
-*/
-//    func handleTapRecognition1() {
-//        
-//        let updateVC = UINavigationController(rootViewController: ProductUpdateController())
-//        
-//        updateVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-//        
-//        present(updateVC, animated: true, completion: nil)
-//        
-//        return
-//
-//    }
 
 /*
     Photo function handlers for Admin Use

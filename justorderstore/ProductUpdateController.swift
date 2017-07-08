@@ -29,6 +29,15 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
     }
     
     var operation = OpType()
+
+    let containerView: UIView = {
+        let cv = UIView()
+        cv.backgroundColor = .clear
+        //cv.backgroundColor = UIColor.gray.withAlphaComponent(0.9)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.layer.masksToBounds = true
+        return cv
+    }()
     
     let productLabel: SkyFloatingLabelTextField = {
         let product_label = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 200, height: 45))
@@ -161,9 +170,10 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         self.view.backgroundColor = dimAlphaColor
         
         self.view.tintColor = .white
+ 
         
         setupNavigationButtons()
-
+		setupContainerView()
 /*
 		All fields to be updated below including UpdateButton - 05/01/17
 */
@@ -173,6 +183,17 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
 
         setupProductActiveSwitch()
         setupProductUpdateButton()
+    }
+    
+    func setupContainerView() {
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.view.addSubview(containerView)
+        
+        containerView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        containerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -16).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
     }
     
     func setupNavigationButtons() {
@@ -229,9 +250,47 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
 /*
 		Implement Firebase persistence here ...
 */
-        let newProduct = Product(data:[
+        var newProduct = Product(data:[
         	"key": flyingProduct.key as AnyObject,
-            "sku": "1234577" as AnyObject,
+            "sku": flyingProduct.sku as AnyObject,
+            "storeID" : flyingProduct.storeID as AnyObject,
+            "desc": productL as AnyObject,
+            "subdesc": productSubL as AnyObject,
+            "category": self.title as AnyObject,
+            "timestamp": flyingProduct.timestamp as AnyObject,
+            "normalImageURL": flyingProduct.normalImageURL as AnyObject,
+            "qty": 4 as AnyObject,
+            "price": 995 as Int as AnyObject,
+            "extendedtext": productDescription.text as AnyObject,
+            "active": productActiveSwitch.currentIndex as Int as AnyObject
+            ])
+
+        if operation == .Create {
+            newProduct = makeNewProductEntry(productL: productL, productSubL: productSubL)
+        }
+        
+		let productViewController = ProductViewController()
+        productViewController.xproduct = newProduct
+        
+        let presentingVC = UINavigationController(rootViewController: productViewController)
+        self.navigationController?.present(presentingVC, animated: true, completion: nil)
+
+    }
+    
+    func makeNewProductEntry(productL: String, productSubL: String)-> Product {
+
+        let uidStore = FIRAuth.auth()!.currentUser!.uid
+
+        let ref = FIRDatabase.database().reference()
+
+        let key = ref.child(uidStore).childByAutoId().key
+        
+        let generatedSKU = NSUUID().uuidString
+
+        let thisProduct = Product(data:[
+            "key": key as AnyObject,
+            "storeID" : uidStore as AnyObject,
+            "sku": generatedSKU as AnyObject,
             "desc": productL as AnyObject,
             "subdesc": productSubL as AnyObject,
             "category": self.title as AnyObject,
@@ -240,15 +299,10 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
             "qty": 4 as AnyObject,
             "price": 995 as Int as AnyObject,
             "extendedtext": productDescription.text as AnyObject,
-            "active": 1 as Int as AnyObject
+            "active": productActiveSwitch.currentIndex as Int as AnyObject
             ])
         
-		let productViewController = ProductViewController()
-        productViewController.xproduct = newProduct
-        
-        let presentingVC = UINavigationController(rootViewController: productViewController)
-        self.navigationController?.present(presentingVC, animated: true, completion: nil)
-
+        return thisProduct
     }
     
     func setupProductUpdateButton() {
@@ -272,7 +326,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         let width = self.view.bounds.width - 60
         
         self.view.addSubview(productLabel)
-        _ = productLabel.anchor(self.view.topAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 160, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 50)
+        _ = productLabel.anchor(containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 100, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 50)
     }
     
     func setupProductSubTitleField() {
@@ -289,7 +343,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         
         self.view.addSubview(productSubLabel)
         
-        _ = productSubLabel.anchor(productLabel.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 4, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 50)
+        _ = productSubLabel.anchor(productLabel.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 4, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 50)
     }
     
     func setupProductDescriptionText() {
@@ -304,16 +358,16 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         
         self.view.addSubview(productDescription)
         
-        _ = productDescription.anchor(productSubLabel.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: nil, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 140)
+        _ = productDescription.anchor(productSubLabel.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 140)
     }
 
     func setupProductActiveSwitch() {
         
-//        let width:CGFloat = 16.00
-//        
-//        self.view.addSubview(productActiveSwitch)
-//        
-//        _ = productActiveSwitch.anchor(productDescription.bottomAnchor, left: self.view.centerXAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 32)
+        let width:CGFloat = 16.00
+        
+        self.view.addSubview(productActiveSwitch)
+        
+        _ = productActiveSwitch.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 32)
     }
     
     override func didReceiveMemoryWarning() {

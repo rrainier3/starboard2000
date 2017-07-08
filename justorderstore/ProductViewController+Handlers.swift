@@ -129,22 +129,27 @@ extension ProductViewController {
     // #selector handle saveButton action
     func handleSaveButton() {
     
-    	let stub = "0000"
-    	let generatedSKU = NSUUID().uuidString
-        
-        let productStage = Product(data:[
-        	"key": flyingProduct.key as AnyObject,
-            "sku": generatedSKU as AnyObject,
-            "desc": self.productLabel.text as AnyObject,
-            "subdesc": self.productSubLabel.text as AnyObject,
-            "category": flyingProduct.category as AnyObject,
-            "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
-            "normalImageURL": stub as AnyObject,
-            "qty": 7 as AnyObject,
-            "price": 999 as AnyObject,
-            "extendedtext": textView.text as AnyObject,
-            "active": 1 as AnyObject
-            ])
+        guard let productStage = flyingProduct else {
+        	print("Error: productStage is Empty!")
+            return
+        }
+    
+//    	let stub = "0000"
+//    	let generatedSKU = NSUUID().uuidString
+//        
+//        let productStage = Product(data:[
+//        	"key": flyingProduct.key as AnyObject,
+//            "sku": generatedSKU as AnyObject,
+//            "desc": self.productLabel.text as AnyObject,
+//            "subdesc": self.productSubLabel.text as AnyObject,
+//            "category": flyingProduct.category as AnyObject,
+//            "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
+//            "normalImageURL": stub as AnyObject,
+//            "qty": 7 as AnyObject,
+//            "price": 999 as AnyObject,
+//            "extendedtext": textView.text as AnyObject,
+//            "active": 1 as AnyObject
+//            ])
         
 		self.persistProductIntoFirebase(productStage)
         

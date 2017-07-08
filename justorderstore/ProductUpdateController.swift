@@ -248,7 +248,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         print(productActiveSwitch.currentIndex)
         
 /*
-		Implement Firebase persistence here ...
+		configure Firebase persistence here ...
 */
         var newProduct = Product(data:[
         	"key": flyingProduct.key as AnyObject,

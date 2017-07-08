@@ -34,6 +34,11 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         setupViews()
         
         setupGestureRecognizers()
+        
+        // Note: No need to verify user1.type == .Admin to call setupGestureRecognizers()
+        // 			because this version is now for Admin only which includes login screen.
+        //			The client version will have the basket control and checkout
+        
     }
     
     // Note: badgeValue initializes back to zero upon dismissing of viewController...
@@ -188,15 +193,6 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         
     }
 
-/*
-	Note: setupGestureRecognizers() will now point to photoFunctionHandler()
-    this is because we have introduced new UIBarButtonItems [editButton, addPlusButton]
-    which will now take care of handleTapRecognition1().  This will have to be modified to handle
-    update/create flags.
-    
-    please implement .... RR 07/05/17
-*/
-
     func handlePlusButton() {
         
         let productUpdateVC = ProductUpdateController()
@@ -260,7 +256,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         
     }
 /*
-     Image handling functions follows ...
+     Image handling functions follows
 */
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
@@ -309,10 +305,17 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     func persistProductIntoFirebase(_ product: Product) {
         
         let uidStore = FIRAuth.auth()!.currentUser!.uid
+        
         let ref = FIRDatabase.database().reference()
+        
         let storage = FIRStorage.storage().reference(forURL: "gs://starboard-fbfd1.appspot.com")
         
-        let key = ref.child(uidStore).childByAutoId().key
+        //let key = ref.child(uidStore).childByAutoId().key
+        
+        guard let key = product.key else {
+        	print("Error: product.key is Empty!")
+            return
+        }
         
         let imageRef = storage.child(uidStore).child("\(key).jpg")
         
@@ -329,13 +332,11 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         view.addSubview(progressView!)
         
         let uploadTask = imageRef.put(data!, metadata: metadata1) { (metadata, error) in
+
             if error != nil {
                 print(error!.localizedDescription)
                 return
             }
-         
-        // note: key should be retained on Update! *******************************
-        //  below key is on Insert mode	 via .childByAutoId()  ******************************
         
             imageRef.downloadURL(completion: { (url, error) in
                 if let url = url {

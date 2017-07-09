@@ -363,6 +363,12 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
 
     func setupProductActiveSwitch() {
         
+        self.productActiveSwitch.selectItemAt(index: flyingProduct.active!)
+        
+        if operation == .Create {
+            self.productActiveSwitch.selectItemAt(index: 0)
+        }
+        
         let width:CGFloat = 16.00
         
         self.view.addSubview(productActiveSwitch)

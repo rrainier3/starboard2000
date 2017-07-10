@@ -95,7 +95,7 @@ extension ProductViewController {
         _ = segmentedControl.anchor(containerView.centerYAnchor, left: productLabel.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 26, leftConstant: 8, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 40)
 
 		textView.text = flyingProduct.extendedtext
-        textView.font = UIFont(name: "GothamPro", size: 15)
+        //textView.font = UIFont(name: "GothamPro", size: 15)
         
         containerView.addSubview(textView)
         

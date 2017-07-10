@@ -12,6 +12,7 @@ import ColorMatchTabs
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import PWSwitch
 
 class UpdateJitterButton: UIButton, Jitterable {
     
@@ -29,6 +30,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
     }
     
     var operation = OpType()
+    var productIsActive: Int? = 0
 
     let containerView: UIView = {
         let cv = UIView()
@@ -158,11 +160,75 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         
         print("OpType Enum: \(operation)")
         
+        productIsActive = flyingProduct.active!
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupProductUpdateViewScreen()
+        setupNavigationButtons()
+		setupContainerView()
+
+        setupProductTitleField()
+        setupProductSubTitleField()
+        setupProductDescriptionText()
+
+        //setupProductActiveSwitch()
+        
+        setupPWActiveSwitch()
+        setupProductUpdateButton()
+    }
+
+    func setupPWActiveSwitch() {
+
+        let pwSwitch = PWSwitch(frame: CGRect(x: 0, y: 0, width: 52, height: 26))
+        pwSwitch.cornerRadius = 14.5
+        pwSwitch.thumbDiameter = 22
+        
+        view.addSubview(pwSwitch)
+        
+        if flyingProduct.active == 1 {
+        	pwSwitch.setOn(true, animated: true)
+        } else {
+            pwSwitch.setOn(false, animated: true)
+        }
+        
+        pwSwitch.addTarget(self, action: #selector(self.onPWSwitchChanged(sender:)), for: .valueChanged)
+        if pwSwitch.on {
+            //do something is switch is on
+            print("BEGIN SWITCH DEFAULT IS ON")
+        } else {
+            print("BEGIN SWITCH DEFAULT IS OFF")
+        }
+        
+//        self.productActiveSwitch.selectItemAt(index: 1)
+//        
+//        if operation == .Create {
+//            self.productActiveSwitch.selectItemAt(index: 0)
+//        }
+//        
+//        let width:CGFloat = 16.00
+//        
+//        self.view.addSubview(productActiveSwitch)
+        
+        _ = pwSwitch.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: 56, heightConstant: 30)
+    }
+    
+    @objc func onPWSwitchChanged(sender: Any) {
+    
+    	let ourswitch: PWSwitch = sender as! PWSwitch
+        if ourswitch.on {
+            //do something is switch is on
+            print("Switch is ON")
+        } else {
+            print("Switch is OFF")
+        }
+    }
+    
+    func setupProductUpdateViewScreen() {
+    
         self.navigationController?.navigationBar.isHidden = false
         
         let dimAlphaColor = UIColor.gray.withAlphaComponent(0.9)
@@ -170,19 +236,6 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         self.view.backgroundColor = dimAlphaColor
         
         self.view.tintColor = .white
- 
-        
-        setupNavigationButtons()
-		setupContainerView()
-/*
-		All fields to be updated below including UpdateButton - 05/01/17
-*/
-        setupProductTitleField()
-        setupProductSubTitleField()
-        setupProductDescriptionText()
-
-        setupProductActiveSwitch()
-        setupProductUpdateButton()
     }
     
     func setupContainerView() {
@@ -228,6 +281,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         
         self.view = nil
     }
+
     
     func handleUpdateButton() {
         
@@ -244,9 +298,13 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
 
         print(productDescription.text)
         print(error, error2)
-        print("ProductActive Switch:")
-        print(productActiveSwitch.currentIndex)
-        
+
+        productActiveSwitch.didSelectItemWith = { (index, title) -> () in
+            
+            print("@makeNewProductEntry productActiveSwitch is \(title)")
+            
+            self.productIsActive = index
+        }
 /*
 		configure Firebase persistence here ...
 */
@@ -262,7 +320,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
             "qty": 4 as AnyObject,
             "price": 995 as Int as AnyObject,
             "extendedtext": productDescription.text as AnyObject,
-            "active": productActiveSwitch.currentIndex as Int as AnyObject
+            "active": self.productIsActive! as Int as AnyObject
             ])
 
         if operation == .Create {
@@ -299,7 +357,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
             "qty": 4 as AnyObject,
             "price": 995 as Int as AnyObject,
             "extendedtext": productDescription.text as AnyObject,
-            "active": productActiveSwitch.currentIndex as Int as AnyObject
+            "active": productIsActive! as Int as AnyObject
             ])
         
         return thisProduct
@@ -363,7 +421,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
 
     func setupProductActiveSwitch() {
         
-        self.productActiveSwitch.selectItemAt(index: flyingProduct.active!)
+        self.productActiveSwitch.selectItemAt(index: 1)
         
         if operation == .Create {
             self.productActiveSwitch.selectItemAt(index: 0)

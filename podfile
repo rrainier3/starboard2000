@@ -14,6 +14,8 @@ target 'justorderstore' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'  
 
+  pod 'PWSwitch'
+
   pod 'GradientCircularProgress', :git => 'https://github.com/keygx/GradientCircularProgress'
     
     post_install do |installer|

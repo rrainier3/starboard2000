@@ -133,6 +133,9 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         tv.text = "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         tv.isEditable = false
         tv.textAlignment = .justified
+        
+        tv.font = UIFont.fontAvenirMedium(ofSize: 18)
+        
         //tv.contentInset = UIEdgeInsets(top: 24, left: 0, bottom: 0, right: 0)
         tv.textColor = UIColor(red: 95/255, green: 100/255, blue: 100/255, alpha: 1)
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -143,6 +146,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         style.lineSpacing = 8
         let attributes = [NSParagraphStyleAttributeName: style]
         tv.attributedText = NSAttributedString(string: tv.text, attributes: attributes)
+        
         return tv
     }()
     
@@ -275,7 +279,12 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     
     	picker.mediaTypes = [kUTTypeImage as String]
         
-        let chosenImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        let chosenImageX = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        let convertedSize: CGSize = CGSize(width: 722, height: 520)
+        
+        let chosenImage = imageWithImage(image: chosenImageX, scaledToSize: convertedSize)
+        
         imageView.contentMode = .scaleAspectFill
         imageView.image = chosenImage
         

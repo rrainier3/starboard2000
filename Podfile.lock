@@ -42,6 +42,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.9)
   - Money (2.0.1):
     - ValueCoding (~> 2)
+  - PWSwitch (1.0.1)
   - SkyFloatingLabelTextField (2.0.1)
   - ValueCoding (2.1.0)
 
@@ -53,6 +54,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GradientCircularProgress (from `https://github.com/keygx/GradientCircularProgress`)
   - Money
+  - PWSwitch
   - SkyFloatingLabelTextField (~> 2.0.0)
 
 EXTERNAL SOURCES:
@@ -77,9 +79,10 @@ SPEC CHECKSUMS:
   GradientCircularProgress: 980f56d08169842ee795c8c3254d7b7433b30114
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   Money: 6faa689f86c455112971c900e8a31fa0b9c02365
+  PWSwitch: fa278086d5451cde5ad11051d2bdccaa7ec78a30
   SkyFloatingLabelTextField: 070e749632ffd608d6fd9db3fa488a822524997c
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
 
-PODFILE CHECKSUM: 4d260582ce3eb4e4e9f2aa56bc905435f746f7e8
+PODFILE CHECKSUM: 9de9fa012380f6a053a2244230256d764f18ca55
 
 COCOAPODS: 1.1.1

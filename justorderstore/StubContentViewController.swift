@@ -50,7 +50,7 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
         super.viewDidLoad()
         
         let mainQueue = DispatchQueue.main
-        let deadline = DispatchTime.now() + .seconds(10)
+        let deadline = DispatchTime.now() + .seconds(05)
         mainQueue.asyncAfter(deadline: deadline) {
             
             // ...
@@ -76,14 +76,6 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
             self.setupTableView()
 
         }
-
-// *        let filterProducts = ProductItemsProviderURL.items
-        //        let products69 = filterProducts.filter({ $0.price == 3995 })
-        //        let products49 = filterProducts.filter({ $0.price == 6000 })
-        //        let products100 = filterProducts.filter({ $0.price == 1000 })
-        //        let products45 = filterProducts.filter({ $0.price == 4500 })
-        
-        //setupDataSource()
         
     }
     

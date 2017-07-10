@@ -143,7 +143,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
         tv.isHidden = false
         // Let us style the linespacing CGFloat in this paragraph
         let style = NSMutableParagraphStyle()
-        style.lineSpacing = 8
+        style.lineSpacing = 10
         let attributes = [NSParagraphStyleAttributeName: style]
         tv.attributedText = NSAttributedString(string: tv.text, attributes: attributes)
         

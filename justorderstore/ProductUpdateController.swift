@@ -30,7 +30,6 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
     }
     
     var operation = OpType()
-    var productIsActive: Int? = 0
 
     let containerView: UIView = {
         let cv = UIView()
@@ -110,21 +109,6 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         tv.attributedText = NSAttributedString(string: tv.text, attributes: attributes)
         return tv
     }()
-
-    let productActiveSwitch: TTSegmentedControl = {
-        let productActiveSwitchX = TTSegmentedControl()
-        productActiveSwitchX.itemTitles = ["ON","OFF"]
-        productActiveSwitchX.selectedTextFont = UIFont.systemFont(ofSize: 16, weight: 0.3)
-        productActiveSwitchX.defaultTextFont = UIFont.systemFont(ofSize: 16, weight: 0.01)
-        productActiveSwitchX.useGradient = false
-        productActiveSwitchX.thumbColor = TTSegmentedControl.UIColorFromRGB(0x1FDB58)
-        productActiveSwitchX.useShadow = true
-        productActiveSwitchX.thumbShadowColor = TTSegmentedControl.UIColorFromRGB(0x56D37C)
-        productActiveSwitchX.allowChangeThumbWidth = false
-        productActiveSwitchX.translatesAutoresizingMaskIntoConstraints = false
-        
-        return productActiveSwitchX
-    }()
     
     let productUpdateButton: UpdateJitterButton = {
         
@@ -158,10 +142,6 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         
         if allowed == false { return }
         
-        print("OpType Enum: \(operation)")
-        
-        productIsActive = flyingProduct.active!
-        
     }
     
     override func viewDidLoad() {
@@ -174,8 +154,6 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         setupProductTitleField()
         setupProductSubTitleField()
         setupProductDescriptionText()
-
-        //setupProductActiveSwitch()
         
         setupPWActiveSwitch()
         setupProductUpdateButton()
@@ -196,22 +174,12 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         }
         
         pwSwitch.addTarget(self, action: #selector(self.onPWSwitchChanged(sender:)), for: .valueChanged)
-        if pwSwitch.on {
-            //do something is switch is on
-            print("BEGIN SWITCH DEFAULT IS ON")
-        } else {
-            print("BEGIN SWITCH DEFAULT IS OFF")
-        }
-        
-//        self.productActiveSwitch.selectItemAt(index: 1)
-//        
-//        if operation == .Create {
-//            self.productActiveSwitch.selectItemAt(index: 0)
+//        if pwSwitch.on {
+//            //do something is switch is on
+//            print("BEGIN SWITCH DEFAULT IS ON")
+//        } else {
+//            print("BEGIN SWITCH DEFAULT IS OFF")
 //        }
-//        
-//        let width:CGFloat = 16.00
-//        
-//        self.view.addSubview(productActiveSwitch)
         
         _ = pwSwitch.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: 56, heightConstant: 30)
     }
@@ -222,8 +190,14 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         if ourswitch.on {
             //do something is switch is on
             print("Switch is ON")
+            
+            flyingProduct.active = 1
+            
         } else {
+        
             print("Switch is OFF")
+            
+            flyingProduct.active = 0
         }
     }
     
@@ -298,13 +272,6 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
 
         print(productDescription.text)
         print(error, error2)
-
-        productActiveSwitch.didSelectItemWith = { (index, title) -> () in
-            
-            print("@makeNewProductEntry productActiveSwitch is \(title)")
-            
-            self.productIsActive = index
-        }
 /*
 		configure Firebase persistence here ...
 */
@@ -320,7 +287,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
             "qty": 4 as AnyObject,
             "price": 995 as Int as AnyObject,
             "extendedtext": productDescription.text as AnyObject,
-            "active": self.productIsActive! as Int as AnyObject
+            "active": flyingProduct.active! as Int as AnyObject
             ])
 
         if operation == .Create {
@@ -357,7 +324,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
             "qty": 4 as AnyObject,
             "price": 995 as Int as AnyObject,
             "extendedtext": productDescription.text as AnyObject,
-            "active": productIsActive! as Int as AnyObject
+            "active": flyingProduct.active! as Int as AnyObject
             ])
         
         return thisProduct
@@ -417,21 +384,6 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         self.view.addSubview(productDescription)
         
         _ = productDescription.anchor(productSubLabel.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 140)
-    }
-
-    func setupProductActiveSwitch() {
-        
-        self.productActiveSwitch.selectItemAt(index: 1)
-        
-        if operation == .Create {
-            self.productActiveSwitch.selectItemAt(index: 0)
-        }
-        
-        let width:CGFloat = 16.00
-        
-        self.view.addSubview(productActiveSwitch)
-        
-        _ = productActiveSwitch.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 32)
     }
     
     override func didReceiveMemoryWarning() {

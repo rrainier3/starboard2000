@@ -19,16 +19,16 @@ extension ProductViewController {
         switch selectedIndex {
         case 1:
             priceLabel.text = "$19.95"
-            flyingProduct?.price = 1995
+            flyingProduct?.price1 = 1995
         case 2:
             priceLabel.text = "$49.50"
-            flyingProduct?.price = 4950
+            flyingProduct?.price2 = 4950
         case 3:
             priceLabel.text = "$74.99"
-            flyingProduct?.price = 7499
+            flyingProduct?.price3 = 7499
         default:
             priceLabel.text = "$19.95"
-            flyingProduct?.price = 1995
+            flyingProduct?.price1 = 1995
         }
         return
     }
@@ -75,7 +75,7 @@ extension ProductViewController {
         
         // insert our priceLabel
         
-        let thisMoney = Money(minorUnits: flyingProduct.price!)
+        let thisMoney = Money(minorUnits: flyingProduct.price1!)
         priceLabel.text = "\(thisMoney)"
         priceLabel.font = UIFont(name: "GothamPro", size: 22)
         
@@ -133,23 +133,6 @@ extension ProductViewController {
         	print("Error: productStage is Empty!")
             return
         }
-    
-//    	let stub = "0000"
-//    	let generatedSKU = NSUUID().uuidString
-//        
-//        let productStage = Product(data:[
-//        	"key": flyingProduct.key as AnyObject,
-//            "sku": generatedSKU as AnyObject,
-//            "desc": self.productLabel.text as AnyObject,
-//            "subdesc": self.productSubLabel.text as AnyObject,
-//            "category": flyingProduct.category as AnyObject,
-//            "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
-//            "normalImageURL": stub as AnyObject,
-//            "qty": 7 as AnyObject,
-//            "price": 999 as AnyObject,
-//            "extendedtext": textView.text as AnyObject,
-//            "active": 1 as AnyObject
-//            ])
         
 		self.persistProductIntoFirebase(productStage)
         

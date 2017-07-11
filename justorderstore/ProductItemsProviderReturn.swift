@@ -9,6 +9,21 @@
 
 import UIKit
 
+
+final class LiveProducts {
+    
+    // MARK: Shared Instance
+    
+    static var sharedInstance = LiveProducts()
+    
+    private init() { }
+    
+    // MARK: Local Variable
+    
+    var items:[Product]?
+}
+
+
 class ProductItemsProviderReturn {
     
     private var _products:[Product] = []
@@ -31,19 +46,7 @@ class ProductItemsProviderReturn {
     
 }
 
-final class LiveProducts {
-    
-    // MARK: Shared Instance
-    
-    static var sharedInstance = LiveProducts()
-    
-    // Can't init is singleton
-    private init() { }
-    
-    // MARK: Local Variable
-    
-    var items:[Product]?
-}
+
 
 /*
  class CardName {
@@ -54,7 +57,7 @@ final class LiveProducts {
  
  }
  
- Please just use this to save a value:
+ Use this to save a value:
  
  CardName.sharedInstance.cardName = "something"
  

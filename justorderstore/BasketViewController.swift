@@ -113,7 +113,7 @@ class BasketViewController: UITableViewController {
     func runTotalForBasket(_ basket: [Product]) -> Int {
         var prices:[Int] = []
         basket.forEach { (b) -> () in
-            prices.append(b.price!)
+            prices.append(b.price1!)
         }
         let total:Int = prices.reduce(0){ $0 + $1 }
         return total
@@ -237,7 +237,7 @@ class BasketViewController: UITableViewController {
         cell.detailTextLabel?.text = product.subdesc
 //        cell.ProductImageView.image = product.normalImage
         
-        let price = Money(minorUnits: product.price!)
+        let price = Money(minorUnits: product.price1!)
         cell.priceLabel.text = "\(price)"
         
         return cell

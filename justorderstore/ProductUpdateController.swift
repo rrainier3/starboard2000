@@ -284,8 +284,9 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
             "category": self.title as AnyObject,
             "timestamp": flyingProduct.timestamp as AnyObject,
             "normalImageURL": flyingProduct.normalImageURL as AnyObject,
-            "qty": 4 as AnyObject,
-            "price": 995 as Int as AnyObject,
+            "price1": 991 as Int as AnyObject,
+            "price2": 992 as Int as AnyObject,
+            "price3": 993 as Int as AnyObject,
             "extendedtext": productDescription.text as AnyObject,
             "active": flyingProduct.active! as Int as AnyObject
             ])
@@ -321,8 +322,9 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
             "category": self.title as AnyObject,
             "timestamp": NSDate().timeIntervalSince1970 as AnyObject,
             "normalImageURL": flyingProduct.normalImageURL as AnyObject,
-            "qty": 4 as AnyObject,
-            "price": 995 as Int as AnyObject,
+            "price1": 991 as Int as AnyObject,
+            "price2": 992 as Int as AnyObject,
+            "price3": 993 as Int as AnyObject,
             "extendedtext": productDescription.text as AnyObject,
             "active": flyingProduct.active! as Int as AnyObject
             ])

@@ -367,8 +367,9 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
                         "category": product.category!,
                         "timestamp": product.timestamp!,
                         "normalImageURL": url.absoluteString,
-                        "qty": product.qty!,
-                        "price": product.price!,
+                        "price1": product.price1!,
+                        "price2": product.price2!,
+                        "price3": product.price3!,
                         "extendedtext": product.extendedtext!,
                         "active": product.active!
                         ] as [String : Any]

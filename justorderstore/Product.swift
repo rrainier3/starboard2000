@@ -17,8 +17,9 @@ class Product: NSObject {
     var category: String?
     var timestamp: NSNumber?
     var normalImageURL: String?
-    var qty: Int?
-    var price: Int?
+    var price1: Int?
+    var price2: Int?
+    var price3: Int?
     var extendedtext: String?
     var active: Int?
     var storeID: String?
@@ -31,8 +32,9 @@ class Product: NSObject {
      desc:     "Asian Cucumber Salad"
      extendedtext:     "This is extended text for admin user to describ..."
      normalImageURL:     "https://firebasestorage.googleapis.com/v0/b/sta..."
-     price:     999
-     qty:     7
+     price1: 999
+     price2: 999
+     price3: 999
      sku:     "7C9F3CD9-39A3-4E85-BB9D-0A597726B379"
      storeID:     "iLCtXp27p4WL5vaVirCIwW8Eprt2"
      subdesc:      "Chicken Flavor"
@@ -52,8 +54,9 @@ class Product: NSObject {
         category = data["category"] as? String
         timestamp = data["timestamp"] as? NSNumber
         normalImageURL = data["normalImageURL"] as? String
-        qty = data["qty"] as? Int
-        price = data["price"] as? Int
+        price1 = data["price1"] as? Int
+        price2 = data["price2"] as? Int
+        price3 = data["price3"] as? Int
         extendedtext = data["extendedtext"] as? String
         active = data["active"] as? Int
         storeID = data["storeID"] as? String

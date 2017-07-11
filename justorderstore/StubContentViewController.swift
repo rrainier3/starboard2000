@@ -14,8 +14,6 @@ var flyingImage: UIImage!
 var flyingProduct: Product!
 
 class StubContentViewController: UITableViewController, ChangeViewProtocol {
-    
-	var localProducts:[Product] = []
 
     enum `Type` {
         case products, venues, reviews, users

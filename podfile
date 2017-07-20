@@ -16,6 +16,8 @@ target 'justorderstore' do
 
   pod 'PWSwitch'
 
+  pod 'Eureka'
+
   pod 'GradientCircularProgress', :git => 'https://github.com/keygx/GradientCircularProgress'
     
     post_install do |installer|

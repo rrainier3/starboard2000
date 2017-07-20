@@ -1,5 +1,6 @@
 PODS:
   - ColorMatchTabs (2.0.1)
+  - Eureka (2.0.1)
   - Firebase/Auth (3.15.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
@@ -38,7 +39,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GradientCircularProgress (3.7.0)
+  - GradientCircularProgress (3.8.0)
   - GTMSessionFetcher/Core (1.1.9)
   - Money (2.0.1):
     - ValueCoding (~> 2)
@@ -48,6 +49,7 @@ PODS:
 
 DEPENDENCIES:
   - ColorMatchTabs (~> 2.0)
+  - Eureka
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -63,11 +65,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   GradientCircularProgress:
-    :commit: fc073d86435a9bef6c169941f0af39b8416f9b27
+    :commit: 7cc950215e7a10acab241a86e79e5c0b0979ff55
     :git: https://github.com/keygx/GradientCircularProgress
 
 SPEC CHECKSUMS:
   ColorMatchTabs: f92f9ff526340c9816570ff2ee9abfc6d85d4a2b
+  Eureka: ae837bb1dfae0c07bc1bda7aeef87876eeb537c2
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -76,13 +79,13 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GradientCircularProgress: 980f56d08169842ee795c8c3254d7b7433b30114
+  GradientCircularProgress: 153d9657d994349d0bb18afe35115747ed8217cb
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   Money: 6faa689f86c455112971c900e8a31fa0b9c02365
   PWSwitch: fa278086d5451cde5ad11051d2bdccaa7ec78a30
   SkyFloatingLabelTextField: 070e749632ffd608d6fd9db3fa488a822524997c
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
 
-PODFILE CHECKSUM: 9de9fa012380f6a053a2244230256d764f18ca55
+PODFILE CHECKSUM: 9acd7860c7f7c590a9c2ecd1b7fab9ea9760e9d9
 
 COCOAPODS: 1.1.1

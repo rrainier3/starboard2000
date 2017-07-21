@@ -109,6 +109,9 @@
 				4F2343F21EAF7D380010E491 /* Extensions.swift */,
 				4F2343F41EAF7D520010E491 /* Protocol.swift */,
 				4F89571B1F01714A00B5A15A /* Service.swift */,
+				4F2343F01EAF7D210010E491 /* TTSegmentedControl.swift */,
+				4F2343EE1EAF7CFB0010E491 /* UIFont+Zeplin.swift */,
+				4F6447E11EAEE2A700AF559E /* ViewController.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -142,7 +145,6 @@
 		4F2343CD1EAF75BE0010E491 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4F6447E11EAEE2A700AF559E /* ViewController.swift */,
 				4F2343F81EAF7EAF0010E491 /* ExampleTableViewCell.swift */,
 				4F2343F91EAF7EAF0010E491 /* BasketTableViewCell.swift */,
 				4F2343FA1EAF7EAF0010E491 /* TotalTableViewCell.swift */,
@@ -168,8 +170,6 @@
 			children = (
 				4F23440D1EAFA99C0010E491 /* Main.storyboard */,
 				4F6447E61EAEE2A700AF559E /* Assets.xcassets */,
-				4F2343EE1EAF7CFB0010E491 /* UIFont+Zeplin.swift */,
-				4F2343F01EAF7D210010E491 /* TTSegmentedControl.swift */,
 				4F2343FE1EAF7FA90010E491 /* Font */,
 			);
 			name = Resource;

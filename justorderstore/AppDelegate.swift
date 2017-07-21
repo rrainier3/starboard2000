@@ -20,10 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
 
         // Ignoring storyboard ...
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        
-        window?.rootViewController = UINavigationController(rootViewController: MyFormViewController())
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.makeKeyAndVisible()
+//        
+//        window?.rootViewController = UINavigationController(rootViewController: MyFormViewController())
         
         return true
     }

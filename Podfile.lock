@@ -1,6 +1,5 @@
 PODS:
   - ColorMatchTabs (2.0.1)
-  - Eureka (2.0.1)
   - Firebase/Auth (3.15.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
@@ -49,7 +48,6 @@ PODS:
 
 DEPENDENCIES:
   - ColorMatchTabs (~> 2.0)
-  - Eureka
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -70,7 +68,6 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ColorMatchTabs: f92f9ff526340c9816570ff2ee9abfc6d85d4a2b
-  Eureka: ae837bb1dfae0c07bc1bda7aeef87876eeb537c2
   Firebase: 2b1cdfba1cda8589f32904a697cc753322bff9d8
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -86,6 +83,6 @@ SPEC CHECKSUMS:
   SkyFloatingLabelTextField: 070e749632ffd608d6fd9db3fa488a822524997c
   ValueCoding: f18cd2f0c941c43e06669717ca25aeed02d702a9
 
-PODFILE CHECKSUM: 9acd7860c7f7c590a9c2ecd1b7fab9ea9760e9d9
+PODFILE CHECKSUM: 9de9fa012380f6a053a2244230256d764f18ca55
 
 COCOAPODS: 1.1.1

@@ -174,12 +174,6 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         }
         
         pwSwitch.addTarget(self, action: #selector(self.onPWSwitchChanged(sender:)), for: .valueChanged)
-//        if pwSwitch.on {
-//            //do something is switch is on
-//            print("BEGIN SWITCH DEFAULT IS ON")
-//        } else {
-//            print("BEGIN SWITCH DEFAULT IS OFF")
-//        }
         
         _ = pwSwitch.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: 56, heightConstant: 30)
     }

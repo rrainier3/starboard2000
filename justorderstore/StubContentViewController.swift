@@ -16,7 +16,9 @@ var flyingProduct: Product!
 class StubContentViewController: UITableViewController, ChangeViewProtocol {
 
     enum `Type` {
-        case products, venues, reviews, users
+        // case products, venues, reviews, users
+        case grilled, veggies, noodles, hotfood
+        
     }
     
     var type: Type!
@@ -53,22 +55,32 @@ class StubContentViewController: UITableViewController, ChangeViewProtocol {
             
             // ...
             print("$ LiveStubs = \(LiveProducts.sharedInstance.items!.count)")
+            
+            // debug here
+			let thisItems = LiveProducts.sharedInstance.items
+            for element in thisItems! {
+                print(element.active!, element.desc!, element.category!)
+            }
 
 			let filterProducts = LiveProducts.sharedInstance.items
-            let products69 = filterProducts?.filter({ $0.category == "Noodles" })
-            let products49 = filterProducts?.filter({ $0.category == "Grilled" })
-            let products100 = filterProducts?.filter({ $0.category == "Veggies" })
-            let products45 = filterProducts?.filter({ $0.category == "HotFood" })
+            let productsNoodles = filterProducts?.filter({ $0.category == "Noodles" })
+            let productsGrilled = filterProducts?.filter({ $0.category == "Grilled" })
+            let productsVeggies = filterProducts?.filter({ $0.category == "Veggies" })
+            let productsHotFood = filterProducts?.filter({ $0.category == "HotFood" })
             // setup
             switch self.type! {
-            case .products:
-                self.objects = products69!
-            case .users:
-                self.objects = products49!
-            case .reviews:
-                self.objects = products100!
-            case .venues:
-                self.objects = products45!
+
+            case .grilled:
+                self.objects = productsGrilled!
+
+            case .veggies:
+                self.objects = productsVeggies!
+
+            case .noodles:
+                self.objects = productsNoodles!
+
+            case .hotfood:
+                self.objects = productsHotFood!
             }
             
             self.setupTableView()

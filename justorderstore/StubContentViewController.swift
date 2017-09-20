@@ -2,7 +2,7 @@
 //  StubContentViewController.swift
 //  ColorMatchTabs
 //
-//  Created by RayRainier on 2/24/17 modified 06/23/17
+//  Created by RayRainier on 2/24/17 modified 09/20/17
 //  Copyright © 2017 RadiuSense. All rights reserved.
 //
 

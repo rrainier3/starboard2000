@@ -16,7 +16,6 @@ var flyingProduct: Product!
 class StubContentViewController: UITableViewController, ChangeViewProtocol {
 
     enum `Type` {
-        // case products, venues, reviews, users
         case grilled, veggies, noodles, hotfood
         
     }

@@ -51,6 +51,19 @@ extension ProductViewController {
         // 722x520/2 pixel size applied to heightConstant
         _ = imageView.anchor(containerView.topAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 520/2)
 
+        // insert our segmented-control here
+        segmentedControl.itemTitles = ["Regular","Large","Tray"]
+        segmentedControl.didSelectItemWith = { (index, title) -> () in
+            print("Selected item \(index) for \(title)")
+            self.changePriceLabel(index)
+        }
+        
+        containerView.addSubview(segmentedControl)
+        
+//        _ = segmentedControl.anchor(containerView.centerYAnchor, left: productLabel.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 26, leftConstant: 8, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 40)
+        
+        _ = segmentedControl.anchor(containerView.centerYAnchor, left: imageView.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 2, leftConstant: 8, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 40)
+
         containerView.addSubview(lineSeparatorView)
         
         _ = lineSeparatorView.anchor(imageView.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 1)
@@ -83,16 +96,7 @@ extension ProductViewController {
         
         _ = priceLabel.anchor(productLabel.topAnchor, left: nil, bottom: nil, right: containerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 8, widthConstant: 0, heightConstant: 0)
         
-        // insert our segmented-control here
-        segmentedControl.itemTitles = ["Regular","Large","Tray"]
-        segmentedControl.didSelectItemWith = { (index, title) -> () in
-            print("Selected item \(index) for \(title)")
-            self.changePriceLabel(index)
-        }
-        
-        containerView.addSubview(segmentedControl)
-        
-        _ = segmentedControl.anchor(containerView.centerYAnchor, left: productLabel.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 26, leftConstant: 8, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 40)
+		// moved segmented-control ^^
 
 		textView.text = flyingProduct.extendedtext
         //textView.font = UIFont(name: "GothamPro", size: 15)

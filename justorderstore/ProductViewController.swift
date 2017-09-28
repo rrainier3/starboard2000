@@ -61,7 +61,7 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     let segmentedControl: TTSegmentedControl = {
         let segmentedControlX = TTSegmentedControl()
         segmentedControlX.allowChangeThumbWidth = false
-        segmentedControlX.frame = CGRect(x: 50, y: 200, width: 100, height: 50)
+        segmentedControlX.frame = CGRect(x: 50, y: 200, width: 100, height: 60)
         
         /*
         // segmentedControl 3 type

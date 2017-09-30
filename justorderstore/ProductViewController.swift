@@ -174,13 +174,16 @@ class ProductViewController: UIViewController, UINavigationControllerDelegate, U
     
     let addButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = refTintColor
+        
+        button.backgroundColor = UIColor.RGBHex(0xA5BD73)
+        
+        //button.backgroundColor = refTintColor
         
         button.setTitle("S A V E", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         
         button.titleLabel?.font = UIFont(name: "GothamPro", size: 18)
-        button.layer.cornerRadius = 25
+        //button.layer.cornerRadius = 25
         button.layer.masksToBounds = true
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1

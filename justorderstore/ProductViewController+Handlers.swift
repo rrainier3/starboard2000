@@ -59,8 +59,6 @@ extension ProductViewController {
         }
         
         containerView.addSubview(segmentedControl)
-        
-//        _ = segmentedControl.anchor(containerView.centerYAnchor, left: productLabel.leftAnchor, bottom: nil, right: containerView.rightAnchor, topConstant: 26, leftConstant: 8, bottomConstant: 0, rightConstant: 16, widthConstant: 0, heightConstant: 40)
 
 		_ = segmentedControl.anchor(imageView.bottomAnchor, left: imageView.leftAnchor, bottom: nil, right: imageView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
 
@@ -105,7 +103,7 @@ extension ProductViewController {
         
         containerView.addSubview(addButton)
         
-        _ = addButton.anchor(textView.bottomAnchor, left: textView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, topConstant: 0, leftConstant: 8, bottomConstant: 20, rightConstant: 12, widthConstant: 0, heightConstant: 50)
+        _ = addButton.anchor(textView.bottomAnchor, left: containerView.leftAnchor, bottom: containerView.bottomAnchor, right: containerView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 20, rightConstant: 0, widthConstant: 0, heightConstant: 50)
     }
     
     // #selector handle addButton action

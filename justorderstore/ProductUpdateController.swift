@@ -109,6 +109,75 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         tv.attributedText = NSAttributedString(string: tv.text, attributes: attributes)
         return tv
     }()
+ 
+    let productPrice1Label: SkyFloatingLabelTextField = {
+        let product_price1label = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 40, height: 45))
+        product_price1label.placeholder = "Regular"
+        product_price1label.title = "Regular"
+        product_price1label.titleColor = .white
+        product_price1label.errorColor = UIColor.orange
+        
+        product_price1label.selectedTitle = "Regular"
+        product_price1label.selectedTitleColor = .white
+        product_price1label.selectedLineColor = .white
+        product_price1label.font = UIFont.fontAvenirMedium(ofSize: 18)
+        
+        product_price1label.textColor = .white
+        product_price1label.placeholderColor = UIColor.white.withAlphaComponent(0.8)
+        product_price1label.lineColor = UIColor.white.withAlphaComponent(0.8)
+        
+        product_price1label.textAlignment = .left
+        product_price1label.isHidden = false
+        product_price1label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return product_price1label
+    }()
+    
+    let productPrice2Label: SkyFloatingLabelTextField = {
+        let product_price1label = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 40, height: 45))
+        product_price1label.placeholder = "Large"
+        product_price1label.title = "Large"
+        product_price1label.titleColor = .white
+        product_price1label.errorColor = UIColor.orange
+        
+        product_price1label.selectedTitle = "Large"
+        product_price1label.selectedTitleColor = .white
+        product_price1label.selectedLineColor = .white
+        product_price1label.font = UIFont.fontAvenirMedium(ofSize: 18)
+        
+        product_price1label.textColor = .white
+        product_price1label.placeholderColor = UIColor.white.withAlphaComponent(0.8)
+        product_price1label.lineColor = UIColor.white.withAlphaComponent(0.8)
+        
+        product_price1label.textAlignment = .left
+        product_price1label.isHidden = false
+        product_price1label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return product_price1label
+    }()
+    
+    let productPrice3Label: SkyFloatingLabelTextField = {
+        let product_price1label = SkyFloatingLabelTextField(frame: CGRect(x: 10, y: 10, width: 40, height: 45))
+        product_price1label.placeholder = "Tray"
+        product_price1label.title = "Tray"
+        product_price1label.titleColor = .white
+        product_price1label.errorColor = UIColor.orange
+        
+        product_price1label.selectedTitle = "Tray"
+        product_price1label.selectedTitleColor = .white
+        product_price1label.selectedLineColor = .white
+        product_price1label.font = UIFont.fontAvenirMedium(ofSize: 18)
+        
+        product_price1label.textColor = .white
+        product_price1label.placeholderColor = UIColor.white.withAlphaComponent(0.8)
+        product_price1label.lineColor = UIColor.white.withAlphaComponent(0.8)
+        
+        product_price1label.textAlignment = .left
+        product_price1label.isHidden = false
+        product_price1label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return product_price1label
+    }()
     
     let productUpdateButton: UpdateJitterButton = {
         
@@ -175,7 +244,7 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         
         pwSwitch.addTarget(self, action: #selector(self.onPWSwitchChanged(sender:)), for: .valueChanged)
         
-        _ = pwSwitch.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: 56, heightConstant: 30)
+        _ = pwSwitch.anchor(productPrice1Label.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: 56, heightConstant: 30)
     }
     
     @objc func onPWSwitchChanged(sender: Any) {
@@ -380,6 +449,44 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         self.view.addSubview(productDescription)
         
         _ = productDescription.anchor(productSubLabel.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: width, heightConstant: 140)
+        
+        // we setup product prices here also
+        
+        self.productPrice1Label.text = "\(flyingProduct.price1!)"
+        
+        if operation == .Create {
+            self.productPrice1Label.text = ""
+        }
+        
+        self.productPrice1Label.delegate = self
+        
+        self.view.addSubview(productPrice1Label)
+ 
+        _ = productPrice1Label.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 50)
+
+        self.productPrice2Label.text = "\(flyingProduct.price2!)"
+        
+        if operation == .Create {
+            self.productPrice2Label.text = ""
+        }
+        
+        self.productPrice2Label.delegate = self
+        
+        self.view.addSubview(productPrice2Label)
+        
+        _ = productPrice2Label.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 140, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 50)
+        
+        self.productPrice3Label.text = "\(flyingProduct.price3!)"
+        
+        if operation == .Create {
+            self.productPrice3Label.text = ""
+        }
+        
+        self.productPrice3Label.delegate = self
+        
+        self.view.addSubview(productPrice3Label)
+        
+        _ = productPrice3Label.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 250, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 50)
     }
     
     override func didReceiveMemoryWarning() {

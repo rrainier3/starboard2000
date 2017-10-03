@@ -200,6 +200,8 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
     }()
     
     override func viewWillAppear(_ animated: Bool) {
+    
+            print(flyingProduct.price1!, flyingProduct.price2!, flyingProduct.price3!)
         
         let loginViewController = LoginViewController()
         
@@ -407,6 +409,8 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
     
     	self.productLabel.text = flyingProduct.desc
         
+        print(flyingProduct.price1!, flyingProduct.price2!, flyingProduct.price3!)
+        
         if operation == .Create {
             self.productLabel.text = ""
         }
@@ -454,6 +458,8 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         
         self.productPrice1Label.text = "\(flyingProduct.price1!)"
         
+        print(flyingProduct.price1!, productPrice1Label.text!)
+        
         if operation == .Create {
             self.productPrice1Label.text = ""
         }
@@ -466,6 +472,8 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
 
         self.productPrice2Label.text = "\(flyingProduct.price2!)"
         
+        print(flyingProduct.price2!, productPrice2Label.text!)
+        
         if operation == .Create {
             self.productPrice2Label.text = ""
         }
@@ -477,6 +485,8 @@ class ProductUpdateController: UIViewController, UINavigationControllerDelegate,
         _ = productPrice2Label.anchor(productDescription.bottomAnchor, left: containerView.leftAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: 140, bottomConstant: 0, rightConstant: 0, widthConstant: 80, heightConstant: 50)
         
         self.productPrice3Label.text = "\(flyingProduct.price3!)"
+        
+        print(flyingProduct.price3!, productPrice3Label.text!)
         
         if operation == .Create {
             self.productPrice3Label.text = ""

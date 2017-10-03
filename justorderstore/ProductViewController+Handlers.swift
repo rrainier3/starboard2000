@@ -16,19 +16,24 @@ extension ProductViewController {
     func changePriceLabel(_ selectedIndex: Int) {
         
         // we can implement this within a dictionary [index, value] returning value
+        
         switch selectedIndex {
         case 1:
-            priceLabel.text = "$19.95"
-            flyingProduct?.price1 = 1995
+            let thisMoney = Money(minorUnits: flyingProduct.price1!)
+            priceLabel.text = "\(thisMoney)"
+
         case 2:
-            priceLabel.text = "$49.50"
-            flyingProduct?.price2 = 4950
+            let thisMoney = Money(minorUnits: flyingProduct.price2!)
+            priceLabel.text = "\(thisMoney)"
+        
         case 3:
-            priceLabel.text = "$74.99"
-            flyingProduct?.price3 = 7499
+            let thisMoney = Money(minorUnits: flyingProduct.price3!)
+            priceLabel.text = "\(thisMoney)"
+        
         default:
-            priceLabel.text = "$19.95"
-            flyingProduct?.price1 = 1995
+            let thisMoney = Money(minorUnits: flyingProduct.price1!)
+            priceLabel.text = "\(thisMoney)"
+        
         }
         return
     }
